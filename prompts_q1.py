@@ -1,9 +1,12 @@
-# prompts_q1.py
+"""
+Prompts e configuração de etapas do Q1 do TR4CTION Agent.
+"""
 
 BASE_CONTEXT = """
 Você é o Agente TR4CTION da FCJ Venture Builder.
 
-Seu papel é ajudar founders a preencher, com profundidade e clareza, os templates do Q1 da trilha TR4CTION:
+Seu papel é ajudar founders a preencher, com profundidade e clareza,
+os templates do Q1 da trilha TR4CTION:
 - Diagnóstico Estratégico + CSD Canvas
 - SWOT + ICP
 - Persona + JTBD
@@ -90,12 +93,29 @@ Formato:
 [JTBD - JOB SOCIAL] ...
 """
 
-# Você pode seguir adicionando para as outras etapas:
-# PROMPT_JORNADA, PROMPT_PUV, PROMPT_GOLDEN_CIRCLE, etc.
-STEP_PROMPTS = {
-    "diagnostico": PROMPT_DIAGNOSTICO,
-    "icp_swot": PROMPT_ICP,
-    "persona_jtbd": PROMPT_PERSONA,
-    # "jornada_puv": PROMPT_JORNADA,
-    # ...
+# ---------------------------------------------------------
+# Configuração de etapas (um único lugar da verdade)
+# ---------------------------------------------------------
+
+STEP_ORDER = ["diagnostico", "icp_swot", "persona_jtbd"]
+
+STEP_CONFIG = {
+    "diagnostico": {
+        "label": "Diagnóstico + CSD Canvas",
+        "prompt": PROMPT_DIAGNOSTICO,
+    },
+    "icp_swot": {
+        "label": "ICP + SWOT",
+        "prompt": PROMPT_ICP,
+    },
+    "persona_jtbd": {
+        "label": "Persona + JTBD",
+        "prompt": PROMPT_PERSONA,
+    },
 }
+
+# Dicionário simples usado pelo agente
+STEP_PROMPTS = {key: cfg["prompt"] for key, cfg in STEP_CONFIG.items()}
+
+# Mapeamento rótulo → chave (usado na interface)
+LABEL_TO_STEP_KEY = {cfg["label"]: key for key, cfg in STEP_CONFIG.items()}

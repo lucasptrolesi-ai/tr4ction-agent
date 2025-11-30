@@ -1,48 +1,54 @@
 import streamlit as st
+
 from agent_core import Tr4ctionAgent
+from prompts_q1 import STEP_CONFIG, STEP_ORDER, LABEL_TO_STEP_KEY
 from utils.data_manager import register_answer
 
 
-# -----------------------------
+# -------------------------------------------------
 # CONFIGURAÇÕES GERAIS
-# -----------------------------
+# -------------------------------------------------
 st.set_page_config(
     page_title="TR4CTION Agent",
     layout="wide",
-    page_icon="🚀"
+    page_icon="🚀",
 )
 
 st.title("🚀 Agente TR4CTION – Q1")
 st.markdown("### Assistente oficial da trilha de Marketing da FCJ Venture Builder")
 
 
-# -----------------------------
+# -------------------------------------------------
 # SIDEBAR – IDENTIFICAÇÃO
-# -----------------------------
+# -------------------------------------------------
 st.sidebar.header("Identificação do Founder")
-startup_name = st.sidebar.text_input("Nome da Startup", placeholder="Ex: Trolesi Joias")
-founder_name = st.sidebar.text_input("Seu nome", placeholder="Ex: Lucas Peixoto")
+
+startup_name = st.sidebar.text_input(
+    "Nome da Startup",
+    placeholder="Ex: Trolesi Joias",
+)
+founder_name = st.sidebar.text_input(
+    "Seu nome",
+    placeholder="Ex: Lucas Peixoto",
+)
 
 
-# -----------------------------
-# FUNÇÃO PARA GERAR ID DO FOUNDER
-# -----------------------------
-def generate_founder_id(startup, founder):
+def generate_founder_id(startup: str, founder: str) -> str:
+    """
+    Gera um identificador simples e estável para o founder.
+    """
     base = f"{startup}_{founder}".lower().replace(" ", "_")
-    return base[:60]  # evita strings gigantes
+    return base[:60]
 
 
 if not (startup_name and founder_name):
-    st.sidebar.warning("Preencha os dados acima para iniciar.")
+    st.sidebar.warning("Preencha nome da startup e do founder para iniciar.")
     st.stop()
 
 founder_id = generate_founder_id(startup_name, founder_name)
 st.sidebar.success(f"ID gerado automaticamente: `{founder_id}`")
 
-
-# -----------------------------
-# LIMPA HISTÓRICO AO TROCAR FOUNDER
-# -----------------------------
+# Reseta histórico se mudar de founder
 if "session_owner" not in st.session_state:
     st.session_state["session_owner"] = founder_id
 
@@ -51,31 +57,22 @@ if st.session_state["session_owner"] != founder_id:
     st.session_state["history"] = []
 
 
-# -----------------------------
+# -------------------------------------------------
 # ETAPAS DO Q1
-# -----------------------------
-STEP_KEYS = {
-    "Diagnóstico + CSD Canvas": "diagnostico",
-    "ICP + SWOT": "icp_swot",
-    "Persona + JTBD": "persona_jtbd",
-}
+# -------------------------------------------------
+step_labels_ordered = [STEP_CONFIG[k]["label"] for k in STEP_ORDER]
 
-etapa = st.selectbox("Escolha a etapa:", list(STEP_KEYS.keys()))
-step_key = STEP_KEYS[etapa]
+etapa_label = st.selectbox("Escolha a etapa:", step_labels_ordered)
+step_key = LABEL_TO_STEP_KEY[etapa_label]
 
-st.write(f"## 📌 Etapa atual: **{etapa}**")
+st.write(f"## 📌 Etapa atual: **{etapa_label}**")
 
 
-# -----------------------------
-# PIPELINE PREMIUM ANIMADO
-# -----------------------------
-def render_pipeline_animated(current_step):
-    steps = {
-        "diagnostico": "Diagnóstico",
-        "icp_swot": "ICP + SWOT",
-        "persona_jtbd": "Persona + JTBD",
-    }
-
+# -------------------------------------------------
+# PIPELINE PREMIUM (visual animado)
+# -------------------------------------------------
+def render_pipeline_animated(current_step: str) -> None:
+    steps = {key: STEP_CONFIG[key]["label"] for key in STEP_ORDER}
     step_keys_order = list(steps.keys())
     current_index = step_keys_order.index(current_step)
 
@@ -110,7 +107,6 @@ def render_pipeline_animated(current_step):
         white-space: nowrap;
     }
 
-    /* Estados */
     .done .step-circle {
         background: #16a34a;
         border-color: #16a34a;
@@ -169,7 +165,7 @@ def render_pipeline_animated(current_step):
       <div class="pipeline">
     """
 
-    for i, step_key in enumerate(step_keys_order):
+    for i, s_key in enumerate(step_keys_order):
         if i < current_index:
             status_class = "done"
         elif i == current_index:
@@ -180,7 +176,7 @@ def render_pipeline_animated(current_step):
         html += f"""
         <div class="step-block {status_class}">
           <div class="step-circle"></div>
-          <div class="step-label">{steps[step_key]}</div>
+          <div class="step-label">{steps[s_key]}</div>
         </div>
         """
 
@@ -197,40 +193,36 @@ def render_pipeline_animated(current_step):
     st.markdown(html, unsafe_allow_html=True)
 
 
-# Renderização do pipeline
 render_pipeline_animated(step_key)
 
 
-# -----------------------------
-# AGENTE
-# -----------------------------
+# -------------------------------------------------
+# AGENTE E HISTÓRICO
+# -------------------------------------------------
 agent = Tr4ctionAgent(startup_name)
 
 if "history" not in st.session_state:
     st.session_state["history"] = []
 
 
-# -----------------------------
-# CAMPO DE MENSAGEM
-# -----------------------------
+# -------------------------------------------------
+# ÁREA DE CONVERSA
+# -------------------------------------------------
 st.markdown("### 💬 Conversa com o Agente TR4CTION")
 
 user_input = st.text_area(
     "Digite sua mensagem:",
     placeholder="Ex: Minha startup vende X e atende Y...",
-    height=120
+    height=120,
 )
 
 enviar = st.button("Enviar 🚀")
 
-
-# -----------------------------
-# PROCESSAMENTO
-# -----------------------------
 if enviar:
     if not user_input.strip():
         st.warning("Digite algo antes de enviar.")
     else:
+        # registra mensagem do usuário
         st.session_state.history.append({"role": "user", "content": user_input})
 
         try:
@@ -238,35 +230,37 @@ if enviar:
                 step_key=step_key,
                 history=st.session_state.history,
                 user_input=user_input,
-                model="gpt-4.1-mini"
             )
 
-            st.session_state.history.append({"role": "assistant", "content": resposta})
+            # registra resposta no histórico da sessão
+            st.session_state.history.append(
+                {"role": "assistant", "content": resposta}
+            )
 
+            # persiste em arquivo
             register_answer(
                 founder_id=founder_id,
                 startup=startup_name,
                 founder_name=founder_name,
                 step=step_key,
-                answer_text=resposta
+                answer_text=resposta,
             )
-
-        except Exception as e:
+        except Exception as exc:
             st.error("Erro ao consultar o agente.")
-            st.exception(e)
+            st.exception(exc)
 
 
-# -----------------------------
+# -------------------------------------------------
 # HISTÓRICO VISUAL
-# -----------------------------
+# -------------------------------------------------
 st.markdown("### 📝 Histórico da Conversa")
 
 for msg in st.session_state.history:
     if msg["role"] == "user":
         st.markdown(
             f"""
-            <div style="padding:10px;border-radius:8px;background:#e8e8e8;margin-bottom:8px;">
-            <strong>👤 Você:</strong><br>{msg['content']}
+            <div style="padding:10px;border-radius:8px;background:#1f2933;margin-bottom:8px;">
+              <strong>👤 Você:</strong><br>{msg['content']}
             </div>
             """,
             unsafe_allow_html=True,
@@ -274,17 +268,17 @@ for msg in st.session_state.history:
     else:
         st.markdown(
             f"""
-            <div style="padding:10px;border-radius:8px;background:#f0f9ff;margin-bottom:8px;">
-            <strong>🤖 Agente:</strong><br>{msg['content']}
+            <div style="padding:10px;border-radius:8px;background:#0f172a;margin-bottom:8px;">
+              <strong>🤖 Agente:</strong><br>{msg['content']}
             </div>
             """,
             unsafe_allow_html=True,
         )
 
 
-# -----------------------------
-# BOTÃO LIMPAR
-# -----------------------------
+# -------------------------------------------------
+# BOTÃO LIMPAR (SIDEBAR)
+# -------------------------------------------------
 st.sidebar.markdown("---")
 if st.sidebar.button("🧹 Limpar conversa"):
     st.session_state.history = []

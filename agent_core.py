@@ -1,8 +1,18 @@
-# agent_core.py
+"""
+Cérebro do Agente TR4CTION.
+
+Responsável por:
+- Montar o histórico de mensagens
+- Chamar a API da OpenAI
+"""
+
 from typing import List, Dict
+
 from openai import OpenAI
-from config import OPENAI_API_KEY
-from prompts_q1 import STEP_PROMPTS   # ✅ Corrigido aqui
+
+from config import OPENAI_API_KEY, DEFAULT_OPENAI_MODEL
+from prompts_q1 import STEP_PROMPTS
+
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -13,7 +23,7 @@ class Tr4ctionAgent:
     nas etapas do Q1, de forma consultiva e operacional.
     """
 
-    def __init__(self, startup_name: str):
+    def __init__(self, startup_name: str) -> None:
         self.startup_name = startup_name
 
     def build_messages(
@@ -28,15 +38,19 @@ class Tr4ctionAgent:
         system_prompt = STEP_PROMPTS.get(step_key)
 
         if not system_prompt:
+            # fallback seguro
             system_prompt = (
-                "Você é um agente de marketing da FCJ. Ajude o usuário com orientações claras."
+                "Você é um agente de marketing da FCJ. "
+                "Ajude o usuário com orientações claras e práticas."
             )
 
         messages: List[Dict[str, str]] = [
             {
                 "role": "system",
-                "content": system_prompt
-                + f"\n\nStartup atual: {self.startup_name}\n",
+                "content": (
+                    system_prompt
+                    + f"\n\nStartup atual: {self.startup_name}\n"
+                ),
             }
         ]
 
@@ -55,7 +69,7 @@ class Tr4ctionAgent:
         step_key: str,
         history: List[Dict[str, str]],
         user_input: str,
-        model: str = "gpt-4.1-mini",
+        model: str = DEFAULT_OPENAI_MODEL,
     ) -> str:
         """
         Envia a conversa para o modelo da OpenAI e retorna a resposta.
@@ -68,4 +82,4 @@ class Tr4ctionAgent:
             temperature=0.3,
         )
 
-        return response.choices[0].message.content
+        return response.choices[0].message.content or ""

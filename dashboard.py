@@ -1,53 +1,69 @@
+"""
+Dashboard de acompanhamento do TR4CTION Agent.
+
+- Lista respostas por founder e por etapa
+- Ajuda mentores a verem o que já foi feito
+"""
+
+from collections import defaultdict
+from typing import Dict, List
+
 import streamlit as st
-from utils.data_manager import load_data
 
-st.title("📊 Dashboard Administrativo - TR4CTION")
+from utils.data_manager import load_answers
 
-data = load_data()
 
-if not data:
-    st.warning("Ainda não há founders registrados.")
-else:
-    st.subheader("Founders cadastrados")
+st.set_page_config(
+    page_title="TR4CTION – Dashboard",
+    layout="wide",
+    page_icon="📊",
+)
 
-    rows = []
-    for fid, info in data.items():
-        rows.append([
-            fid,
-            info["startup"],
-            info["founder_name"],
-            info["step"],
-            info["last_update"]
-        ])
+st.title("📊 Dashboard – TR4CTION Agent (Q1)")
 
-    st.table({
-        "ID": [r[0] for r in rows],
-        "Startup": [r[1] for r in rows],
-        "Founder": [r[2] for r in rows],
-        "Etapa Atual": [r[3] for r in rows],
-        "Última Atividade": [r[4] for r in rows]
-    })
+answers = load_answers()
 
-    st.subheader("🔎 Consultar Founder")
+if not answers:
+    st.info("Nenhuma resposta registrada ainda. Use o app principal primeiro.")
+    st.stop()
 
-    selected = st.selectbox("Selecione um founder:", list(data.keys()))
+# ---------------------------
+# Filtros
+# ---------------------------
+founders = sorted({row["founder_id"] for row in answers})
+steps = sorted({row["step"] for row in answers})
 
-    if selected:
-        info = data[selected]
+col_f1, col_f2 = st.columns(2)
+selected_founder = col_f1.selectbox("Filtrar por Founder ID", ["(todos)"] + founders)
+selected_step = col_f2.selectbox("Filtrar por etapa", ["(todas)"] + steps)
 
-        st.write(f"### Startup: **{info['startup']}**")
-        st.write(f"### Founder: **{info['founder_name']}**")
-        st.write(f"### Etapa atual: `{info['step']}`")
-        st.write("---")
+filtered: List[Dict] = []
+for row in answers:
+    if selected_founder != "(todos)" and row["founder_id"] != selected_founder:
+        continue
+    if selected_step != "(todas)" and row["step"] != selected_step:
+        continue
+    filtered.append(row)
 
-        st.write("## Respostas")
-        for etapa, texto in info["answers"].items():
-            st.write(f"### {etapa.upper()}")
-            st.write(texto)
-            st.write("---")
+st.markdown(f"### Resultados filtrados: {len(filtered)} registros")
 
-        st.download_button(
-            "📄 Baixar trilha em TXT",
-            data="\n\n".join([f"{k}\n{text}" for k, text in info["answers"].items()]),
-            file_name=f"{info['founder_name']}_trilha.txt"
+# Agrupar por founder + step
+grouped: Dict[str, List[Dict]] = defaultdict(list)
+for row in filtered:
+    key = f"{row['founder_name']} – {row['startup']} ({row['founder_id']})"
+    grouped[key].append(row)
+
+for header, rows in grouped.items():
+    st.markdown(f"#### 👤 {header}")
+    for r in rows:
+        ts = r["timestamp"]
+        step = r["step"]
+        st.markdown(
+            f"""
+            <div style="padding:10px;border-radius:8px;background:#111827;margin-bottom:10px;">
+              <div style="font-size:0.8rem;color:#9CA3AF;">{ts} · etapa: <strong>{step}</strong></div>
+              <div style="margin-top:6px;white-space:pre-wrap;">{r['answer']}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
