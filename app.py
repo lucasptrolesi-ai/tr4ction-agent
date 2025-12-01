@@ -4,7 +4,7 @@ from prompts_q1 import LABEL_TO_STEP_KEY, STEP_CONFIG, STEP_ORDER
 from utils.data_manager import register_answer
 
 # =============================================
-# CONFIGURAÇÃO DO APP (tema premium FCJ)
+# CONFIG DO APP – CLEAN CORPORATE
 # =============================================
 st.set_page_config(
     page_title="TR4CTION Agent – FCJ Venture Builder",
@@ -12,100 +12,122 @@ st.set_page_config(
     page_icon="🚀",
 )
 
-# CUSTOM CSS
+# =============================================
+# ESTILO CLEAN GLOBAL
+# =============================================
 st.markdown("""
 <style>
 
-body {
-    background-color: #0d1117;
+html, body, [class*="css"]  {
+    font-family: "Inter", sans-serif;
 }
 
-/* SIDEBAR */
+/* Paleta */
+:root {
+    --primary-blue: #3b82f6;
+    --light-blue: #e8f0fe;
+    --light-gray: #f4f4f5;
+    --text-dark: #111827;
+    --text-gray: #374151;
+}
+
+/* Forçar app claro */
+[data-testid="stAppViewContainer"] {
+    background-color: #ffffff !important;
+}
+
+/* SIDEBAR CLEAN */
 [data-testid="stSidebar"] {
-    background: #0d1117;
-    padding: 20px;
-    border-right: 1px solid #1f2937;
+    background-color: #ffffff !important;
+    border-right: 1px solid #e5e7eb;
+    padding: 20px !important;
+}
+
+[data-testid="stSidebar"] * {
+    color: var(--text-dark) !important;
 }
 
 .sidebar-title {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #60a5fa;
+    color: var(--primary-blue) !important;
     margin-bottom: 12px;
-}
-
-.fcj-logo {
-    width: 170px;
-    margin-bottom: 20px;
 }
 
 /* HEADER */
 .header-title {
-    color: #93c5fd;
+    color: var(--text-dark) !important;
     font-size: 2rem;
     font-weight: 700;
 }
 
 .header-sub {
-    color: #cbd5e1;
-    font-size: 1.1rem;
-    margin-top: -10px;
+    color: var(--text-gray) !important;
+    font-size: 1.05rem;
+    margin-top: -6px;
 }
 
-/* BALOES DO CHAT */
+/* BALÕES DO CHAT */
 .msg-user {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    padding: 14px;
-    color: white;
-    border-radius: 12px;
+    background: var(--primary-blue);
+    padding: 12px 16px;
+    color: #ffffff !important;
+    border-radius: 14px;
     max-width: 70%;
     margin-left: auto;
     margin-bottom: 12px;
+    font-size: 0.95rem;
 }
 
 .msg-agent {
-    background: #1f2937;
-    border: 1px solid #374151;
-    padding: 14px;
-    color: #e5e7eb;
-    border-radius: 12px;
+    background: var(--light-blue);
+    padding: 12px 16px;
+    color: var(--text-dark) !important;
+    border-radius: 14px;
     max-width: 75%;
     margin-bottom: 12px;
+    font-size: 0.95rem;
 }
 
-/* CAIXA DE TEXTO */
-textarea {
-    background: #0f172a !important;
-    color: #e2e8f0 !important;
+/* INPUTS */
+textarea, input {
+    background: #ffffff !important;
+    color: var(--text-dark) !important;
+    border: 1px solid #d1d5db !important;
     border-radius: 10px !important;
 }
 
 /* BOTÃO */
-button[kind="primary"] {
-    background: #2563eb !important;
-    color: white !important;
-    border-radius: 10px !important;
+.stButton > button {
+    background-color: var(--primary-blue) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 8px 20px !important;
+    font-weight: 600;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-
 # =============================================
-# SIDEBAR PREMIUM FCJ
+# SIDEBAR CLEAN CORPORATE
 # =============================================
 with st.sidebar:
-    st.image("https://fcjventurebuilder.com/wp-content/uploads/2023/05/logo-fcj-2023-branca.png",
-             use_column_width=True)
+    # Logo FCJ (troque a URL se quiser usar outra imagem)
+    st.image(
+        "https://i.imgur.com/YX7FqSR.png",
+        use_column_width=True,
+    )
 
     st.markdown("<div class='sidebar-title'>Identificação</div>", unsafe_allow_html=True)
 
     startup_name = st.text_input("Startup")
     founder_name = st.text_input("Founder")
 
-    def generate_id(s, f):
+    def generate_id(s: str, f: str) -> str:
         return (s + "_" + f).lower().replace(" ", "_")[:60]
 
+    founder_id = None
     if startup_name and founder_name:
         founder_id = generate_id(startup_name, founder_name)
         st.success(f"ID: {founder_id}")
@@ -115,27 +137,31 @@ with st.sidebar:
             st.rerun()
 
     st.markdown("---")
-    st.markdown("<small style='color:#64748b;'>Powered by FCJ Venture Builder • TR4CTION Q1</small>", unsafe_allow_html=True)
+    st.markdown(
+        "<small style='color:#6b7280;'>Powered by FCJ Venture Builder • TR4CTION Q1</small>",
+        unsafe_allow_html=True,
+    )
 
-
-# Se não tiver identificação, trava.
-if not (startup_name and founder_name):
+# Se não tiver identificação, não mostra o resto
+if not (startup_name and founder_name and founder_id):
+    st.info("Preencha Startup e Founder na lateral para iniciar o atendimento.")
     st.stop()
 
-
 # =============================================
-# HEADER PREMIUM
+# HEADER
 # =============================================
-st.markdown("<div class='header-title'>🚀 TR4CTION Agent — FCJ Venture Builder</div>",
-            unsafe_allow_html=True)
-
-st.markdown("<div class='header-sub'>Assistente Estratégico para Diagnóstico, ICP, SWOT e Persona</div>",
-            unsafe_allow_html=True)
+st.markdown(
+    "<div class='header-title'>🚀 TR4CTION Agent – FCJ Venture Builder</div>",
+    unsafe_allow_html=True,
+)
+st.markdown(
+    "<div class='header-sub'>Assistente estratégico para Diagnóstico, ICP, SWOT e Persona no Q1</div>",
+    unsafe_allow_html=True,
+)
 st.markdown("")
 
-
 # =============================================
-# ETAPAS (SELECT)
+# ETAPAS
 # =============================================
 step_labels = [STEP_CONFIG[k]["label"] for k in STEP_ORDER]
 stage_label = st.selectbox("Selecione a etapa:", step_labels)
@@ -143,55 +169,59 @@ step_key = LABEL_TO_STEP_KEY[stage_label]
 
 st.markdown("")
 
-
 # =============================================
-# HISTÓRICO
+# HISTÓRICO DO CHAT
 # =============================================
 if "history" not in st.session_state:
     st.session_state.history = []
 
 agent = Tr4ctionAgent(startup_name)
 
-
-# =============================================
-# ÁREA DE CHAT
-# =============================================
-st.markdown("## 💬 Chat")
+st.markdown("## 💬 Conversa")
 
 chat_container = st.container()
 
 with chat_container:
     for msg in st.session_state.history:
         if msg["role"] == "user":
-            st.markdown(f"<div class='msg-user'>{msg['content']}</div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div class='msg-user'>{msg['content']}</div>",
+                unsafe_allow_html=True,
+            )
         else:
-            st.markdown(f"<div class='msg-agent'>{msg['content']}</div>", unsafe_allow_html=True)
-
+            st.markdown(
+                f"<div class='msg-agent'>{msg['content']}</div>",
+                unsafe_allow_html=True,
+            )
 
 # =============================================
-# ENTRADA DO FUNDER
+# CAIXA DE MENSAGEM
 # =============================================
 st.markdown("## ✏️ Enviar mensagem")
-user_input = st.text_area("", placeholder="Digite aqui sua mensagem...")
+user_input = st.text_area("", placeholder="Digite sua mensagem aqui...")
 
 if st.button("Enviar"):
     if user_input.strip():
+        # registra mensagem do founder
         st.session_state.history.append({"role": "user", "content": user_input})
-        
+
+        # consulta o agente
         response = agent.ask(
             step_key=step_key,
             history=st.session_state.history,
-            user_input=user_input
+            user_input=user_input,
         )
-        
+
+        # registra resposta do agente
         st.session_state.history.append({"role": "assistant", "content": response})
-        
+
+        # persiste no JSON para o dashboard
         register_answer(
             founder_id=founder_id,
             startup=startup_name,
             founder_name=founder_name,
             step=step_key,
-            answer_text=response
+            answer_text=response,
         )
 
         st.rerun()
