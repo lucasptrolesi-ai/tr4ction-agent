@@ -23,11 +23,11 @@ html, body, [class*="css"]  {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
-/* Paleta baseada na logo da FCJ */
+/* Paleta baseada na marca FCJ */
 :root {
-    --fcj-primary: #1BA6B2;   /* azul principal */
-    --fcj-secondary: #64C7D0; /* azul claro */
-    --fcj-deep: #0F5C63;      /* azul profundo */
+    --fcj-primary: #1BA6B2;
+    --fcj-secondary: #64C7D0;
+    --fcj-deep: #0F5C63;
     --bg-page: #F5F7FA;
     --bg-card: #FFFFFF;
     --border-soft: #E5E7EB;
@@ -35,79 +35,77 @@ html, body, [class*="css"]  {
     --text-gray: #4B5563;
 }
 
-/* Forçar fundo claro geral */
+/* Fundo global */
 [data-testid="stAppViewContainer"] {
     background-color: var(--bg-page) !important;
 }
 
 /* ===============================
-   LAYOUT PRINCIPAL
+   HEADER
    =============================== */
+.fcj-header-bar {
+    background: linear-gradient(90deg, #ffffff 0%, #ecfbfd 50%, #ffffff 100%);
+    border-radius: 18px;
+    border: 1px solid var(--border-soft);
+    padding: 18px 26px 18px 26px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
 
+.fcj-header-badge {
+    background-color: #dff7fa;
+    color: var(--fcj-deep);
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.fcj-header-title {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.fcj-header-sub {
+    font-size: 1rem;
+    color: var(--text-gray);
+    margin-top: -6px;
+}
+
+/* ===============================
+   ESTRUTURA GERAL
+   =============================== */
 .fcj-page {
-    padding: 20px 40px 30px 40px;
+    padding: 20px 38px 30px 38px;
 }
 
 .fcj-main-grid {
     display: grid;
-    grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
-    grid-gap: 18px;
-    margin-top: 18px;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    margin-top: 20px;
 }
 
 /* ===============================
-   HEADER
+   CARD LATERAL (ETAPA)
    =============================== */
-
-.fcj-header-bar {
-    background: linear-gradient(90deg, #ffffff 0%, #f0fbfd 40%, #ffffff 100%);
-    border-radius: 18px;
-    border: 1px solid var(--border-soft);
-    padding: 16px 22px 14px 22px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.fcj-header-badge {
-    background-color: #e0f7fb;
-    color: var(--fcj-deep);
-    font-size: 0.75rem;
-    padding: 4px 10px;
-    border-radius: 999px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-}
-
-.fcj-header-title {
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 2px;
-}
-
-.fcj-header-sub {
-    font-size: 0.96rem;
-    color: var(--text-gray);
-}
-
-/* ===============================
-   CARD LATERAL (ETAPA / INFO)
-   =============================== */
-
 .fcj-panel {
-    background-color: var(--bg-card);
+    background: var(--bg-card);
     border-radius: 16px;
     border: 1px solid var(--border-soft);
-    padding: 16px 16px 18px 16px;
+    padding: 18px 18px 20px 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
 }
 
 .fcj-panel-title {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 4px;
 }
 
 .fcj-panel-sub {
@@ -119,59 +117,58 @@ html, body, [class*="css"]  {
 /* ===============================
    CHAT
    =============================== */
-
 .fcj-chat-card {
-    background-color: var(--bg-card);
+    background: var(--bg-card);
     border-radius: 16px;
     border: 1px solid var(--border-soft);
-    padding: 14px 16px 10px 16px;
+    padding: 20px;
+    min-height: 450px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
 }
 
 .fcj-chat-title {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 6px;
 }
 
 .fcj-chat-sub {
-    font-size: 0.8rem;
+    font-size: 0.83rem;
     color: var(--text-gray);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
-/* Balões */
+/* Bolhas do chat */
 .msg-user {
     background: var(--fcj-primary);
-    padding: 10px 14px;
-    color: #ffffff !important;
+    padding: 12px 15px;
+    color: white !important;
     border-radius: 14px;
-    max-width: 72%;
+    max-width: 70%;
     margin-left: auto;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 14px rgba(27,166,178,0.25);
     font-size: 0.94rem;
-    box-shadow: 0 6px 12px rgba(27, 166, 178, 0.24);
 }
 
 .msg-agent {
-    background: #f0fbfd;
-    border: 1px solid #d1f0f4;
-    padding: 10px 14px;
+    background: #e8f7f9;
+    padding: 12px 15px;
+    border: 1px solid #b5e4e9;
     color: var(--text-dark) !important;
     border-radius: 14px;
-    max-width: 78%;
-    margin-bottom: 10px;
+    max-width: 80%;
+    margin-bottom: 12px;
     font-size: 0.94rem;
 }
 
 /* ===============================
-   INPUTS E BOTÕES
+   INPUTS & BOTÕES
    =============================== */
-
 textarea, input {
-    background: #ffffff !important;
+    background: white !important;
     color: var(--text-dark) !important;
-    border: 1px solid #d1d5db !important;
+    border: 1px solid #d0d7de !important;
     border-radius: 10px !important;
 }
 
@@ -180,28 +177,23 @@ textarea, input {
 }
 
 .stButton > button {
-    background: var(--fcj-deep) !important;
-    color: #ffffff !important;
+    background: var(--fcj-primary) !important;
+    color: white !important;
     border-radius: 999px !important;
-    padding: 6px 22px !important;
-    font-weight: 600;
+    padding: 8px 28px !important;
     border: none;
-    box-shadow: 0 4px 10px rgba(15, 92, 99, 0.22);
+    box-shadow: 0 6px 14px rgba(27,166,178,0.25);
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
 .stButton > button:hover {
-    background: #0c4850 !important;
+    background: var(--fcj-deep) !important;
 }
 
-/* Labels dos campos */
-.stSelectbox label, .stTextInput label {
-    font-weight: 500;
-    color: var(--text-gray);
-}
-
-/* Rodapé leve */
+/* Rodapé */
 .fcj-footer {
-    margin-top: 12px;
+    margin-top: 20px;
     font-size: 0.78rem;
     color: #9ca3af;
     text-align: right;
@@ -213,16 +205,21 @@ textarea, input {
 )
 
 # =============================================
-# SIDEBAR – SÓ IDENTIFICAÇÃO (MANTIDA SIMPLES)
+# SIDEBAR – IDENTIFICAÇÃO
 # =============================================
 with st.sidebar:
     st.markdown(
         """
-        <div style="margin-bottom:18px;">
-          <div style="font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;">
+        <div style="margin-bottom:16px;">
+          <div style="
+            font-size:0.85rem;
+            text-transform:uppercase;
+            letter-spacing:0.08em;
+            color:#6b7280;">
             FCJ Venture Builder
           </div>
-          <div style="font-size:1.1rem;font-weight:700;color:#111827;">
+
+          <div style="font-size:1.15rem;font-weight:700;color:#111827;">
             TR4CTION Agent
           </div>
         </div>
@@ -233,7 +230,7 @@ with st.sidebar:
     startup_name = st.text_input("Startup")
     founder_name = st.text_input("Founder")
 
-    def generate_id(s: str, f: str) -> str:
+    def generate_id(s: str, f: str):
         return (s + "_" + f).lower().replace(" ", "_")[:60]
 
     founder_id = None
@@ -252,17 +249,17 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
-# Se não tiver identificação, só mostra o aviso no centro
+# Se não estiver identificado → mostra aviso
 if not (startup_name and founder_name and founder_id):
     st.markdown(
         """
         <div class="fcj-page">
           <div class="fcj-header-bar">
             <div>
-              <div class="fcj-header-badge">Agente de IA • Q1 TR4CTION</div>
+              <div class="fcj-header-badge">Agente de IA • TR4CTION</div>
               <div class="fcj-header-title">TR4CTION Agent – FCJ Venture Builder</div>
               <div class="fcj-header-sub">
-                Preencha os campos de <strong>Startup</strong> e <strong>Founder</strong> na lateral para iniciar.
+                Preencha Startup e Founder na barra lateral para iniciar.
               </div>
             </div>
           </div>
@@ -273,7 +270,7 @@ if not (startup_name and founder_name and founder_id):
     st.stop()
 
 # =============================================
-# INÍCIO DA PÁGINA – HTML ESTRUTURADO
+# INÍCIO DA PÁGINA – HEADER COMPLETO
 # =============================================
 st.markdown(
     """
@@ -281,35 +278,30 @@ st.markdown(
 
   <div class="fcj-header-bar">
     <div>
-      <div class="fcj-header-badge">Agente de IA • Q1 TR4CTION</div>
+      <div class="fcj-header-badge">Agente de IA • TR4CTION</div>
       <div class="fcj-header-title">TR4CTION Agent – FCJ Venture Builder</div>
       <div class="fcj-header-sub">
-        Assistente estratégico para orientar o founder no Diagnóstico, ICP, SWOT e Persona,
-        usando o material oficial da trilha TR4CTION.
+        Assistente estratégico para Diagnóstico, ICP, SWOT e Persona usando o material oficial do TR4CTION.
       </div>
     </div>
   </div>
 
   <div class="fcj-main-grid">
-"""
-    ,
+    """,
     unsafe_allow_html=True,
 )
 
 # =============================================
-# COLUNA ESQUERDA – ETAPA + CONTEXTO
+# PAINEL ESQUERDO (ETAPA)
 # =============================================
 col_left, col_right = st.columns([0.95, 2.05])
 
 with col_left:
     st.markdown('<div class="fcj-panel">', unsafe_allow_html=True)
 
+    st.markdown('<div class="fcj-panel-title">Etapa do Q1</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="fcj-panel-title">Etapa do Q1</div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        '<div class="fcj-panel-sub">Selecione qual bloco da trilha TR4CTION você está trabalhando agora.</div>',
+        '<div class="fcj-panel-sub">Selecione qual bloco você está trabalhando.</div>',
         unsafe_allow_html=True,
     )
 
@@ -319,19 +311,10 @@ with col_left:
 
     st.markdown(
         f"""
-        <div style="margin-top:14px;font-size:0.86rem;color:#6b7280;">
-          <strong>Startup:</strong> {startup_name}<br>
-          <strong>Founder:</strong> {founder_name}<br>
-          <strong>Etapa atual:</strong> {stage_label}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        """
-        <div style="margin-top:14px;font-size:0.8rem;color:#9ca3af;">
-          Dica: responda com exemplos reais. O agente vai fazer perguntas antes de sugerir preenchimentos.
+        <div style="margin-top:16px;font-size:0.86rem;color:#6b7280;">
+            <strong>Startup:</strong> {startup_name}<br>
+            <strong>Founder:</strong> {founder_name}<br>
+            <strong>Etapa:</strong> {stage_label}
         </div>
         """,
         unsafe_allow_html=True,
@@ -340,7 +323,7 @@ with col_left:
     st.markdown("</div>", unsafe_allow_html=True)
 
 # =============================================
-# COLUNA DIREITA – CHAT COMPLETO
+# COLUNA DIREITA – CHAT
 # =============================================
 if "history" not in st.session_state:
     st.session_state.history = []
@@ -348,82 +331,55 @@ if "history" not in st.session_state:
 agent = Tr4ctionAgent(startup_name)
 
 with col_right:
-    # Card do chat
     st.markdown('<div class="fcj-chat-card">', unsafe_allow_html=True)
 
-    st.markdown(
-        '<div class="fcj-chat-title">Conversa com o TR4CTION Agent</div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        '<div class="fcj-chat-sub">Use o chat para aprofundar as respostas da etapa atual. O agente usa o material oficial do TR4CTION como base.</div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="fcj-chat-title">Conversa com o TR4CTION Agent</div>', unsafe_allow_html=True)
+    st.markdown('<div class="fcj-chat-sub">Aprofunde a etapa atual conversando com o agente.</div>', unsafe_allow_html=True)
 
-    # Renderiza histórico
+    # Histórico
     for msg in st.session_state.history:
         if msg["role"] == "user":
-            st.markdown(
-                f"<div class='msg-user'>{msg['content']}</div>",
-                unsafe_allow_html=True,
-            )
+            st.markdown(f"<div class='msg-user'>{msg['content']}</div>", unsafe_allow_html=True)
         else:
-            st.markdown(
-                f"<div class='msg-agent'>{msg['content']}</div>",
-                unsafe_allow_html=True,
-            )
+            st.markdown(f"<div class='msg-agent'>{msg['content']}</div>", unsafe_allow_html=True)
 
-    # Caixa de mensagem
-    st.markdown(
-        "<div style='margin-top:12px;font-weight:500;color:#111827;font-size:0.95rem;'>✏️ Enviar nova mensagem</div>",
-        unsafe_allow_html=True,
-    )
-    user_input = st.text_area(
-        "",
-        placeholder="Descreva sua situação, dúvida ou próxima etapa que deseja trabalhar...",
-    )
+    # Input
+    user_input = st.text_area("", placeholder="Descreva sua dúvida ou etapa atual...")
 
     if st.button("Enviar mensagem"):
         if user_input.strip():
-            # adiciona ao histórico
             st.session_state.history.append({"role": "user", "content": user_input})
 
-            # chama o agente
             response = agent.ask(
                 step_key=step_key,
                 history=st.session_state.history,
-                user_input=user_input,
+                user_input=user_input
             )
 
-            st.session_state.history.append(
-                {"role": "assistant", "content": response}
-            )
+            st.session_state.history.append({"role": "assistant", "content": response})
 
-            # salva para o dashboard
             register_answer(
                 founder_id=founder_id,
                 startup=startup_name,
                 founder_name=founder_name,
                 step=step_key,
-                answer_text=response,
+                answer_text=response
             )
 
-            st.experimental_rerun()
+            st.rerun()
 
     st.markdown("</div>", unsafe_allow_html=True)
 
 # =============================================
-# FECHA DIV PRINCIPAL E RODAPÉ
+# RODAPÉ
 # =============================================
 st.markdown(
     """
-  </div> <!-- fcj-main-grid -->
-
-  <div class="fcj-footer">
-    FCJ Venture Builder · TR4CTION Agent – protótipo acadêmico para apoio consultivo-operacional.
-  </div>
-
-</div> <!-- fcj-page -->
+    </div> <!-- grid -->
+    <div class="fcj-footer">
+        FCJ Venture Builder • TR4CTION Agent – protótipo acadêmico para apoio consultivo-operacional.
+    </div>
+</div> <!-- page -->
 """,
     unsafe_allow_html=True,
 )
