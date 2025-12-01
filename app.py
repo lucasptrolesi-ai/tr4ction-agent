@@ -1,263 +1,197 @@
-# app.py
 import streamlit as st
-
 from agent_core import Tr4ctionAgent
 from prompts_q1 import LABEL_TO_STEP_KEY, STEP_CONFIG, STEP_ORDER
 from utils.data_manager import register_answer
 
-
-# ============================================
-#  CONFIGURAÇÃO DA PÁGINA
-# ============================================
+# =============================================
+# CONFIGURAÇÃO DO APP (tema premium FCJ)
+# =============================================
 st.set_page_config(
-    page_title="TR4CTION Agent",
+    page_title="TR4CTION Agent – FCJ Venture Builder",
     layout="wide",
     page_icon="🚀",
 )
 
-st.title("🚀 Agente TR4CTION – Q1")
-st.markdown("### Assistente oficial da trilha de Marketing da FCJ Venture Builder")
+# CUSTOM CSS
+st.markdown("""
+<style>
+
+body {
+    background-color: #0d1117;
+}
+
+/* SIDEBAR */
+[data-testid="stSidebar"] {
+    background: #0d1117;
+    padding: 20px;
+    border-right: 1px solid #1f2937;
+}
+
+.sidebar-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #60a5fa;
+    margin-bottom: 12px;
+}
+
+.fcj-logo {
+    width: 170px;
+    margin-bottom: 20px;
+}
+
+/* HEADER */
+.header-title {
+    color: #93c5fd;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.header-sub {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    margin-top: -10px;
+}
+
+/* BALOES DO CHAT */
+.msg-user {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    padding: 14px;
+    color: white;
+    border-radius: 12px;
+    max-width: 70%;
+    margin-left: auto;
+    margin-bottom: 12px;
+}
+
+.msg-agent {
+    background: #1f2937;
+    border: 1px solid #374151;
+    padding: 14px;
+    color: #e5e7eb;
+    border-radius: 12px;
+    max-width: 75%;
+    margin-bottom: 12px;
+}
+
+/* CAIXA DE TEXTO */
+textarea {
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+    border-radius: 10px !important;
+}
+
+/* BOTÃO */
+button[kind="primary"] {
+    background: #2563eb !important;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 
-# ============================================
-# SIDEBAR – IDENTIFICAÇÃO
-# ============================================
-st.sidebar.header("Identificação do Founder")
+# =============================================
+# SIDEBAR PREMIUM FCJ
+# =============================================
+with st.sidebar:
+    st.image("https://fcjventurebuilder.com/wp-content/uploads/2023/05/logo-fcj-2023-branca.png",
+             use_column_width=True)
 
-startup_name = st.sidebar.text_input(
-    "Nome da Startup", placeholder="Ex: Trolesi Joias"
-)
-founder_name = st.sidebar.text_input("Seu nome", placeholder="Ex: Lucas Peixoto")
+    st.markdown("<div class='sidebar-title'>Identificação</div>", unsafe_allow_html=True)
+
+    startup_name = st.text_input("Startup")
+    founder_name = st.text_input("Founder")
+
+    def generate_id(s, f):
+        return (s + "_" + f).lower().replace(" ", "_")[:60]
+
+    if startup_name and founder_name:
+        founder_id = generate_id(startup_name, founder_name)
+        st.success(f"ID: {founder_id}")
+
+        if st.button("Limpar conversa"):
+            st.session_state.history = []
+            st.rerun()
+
+    st.markdown("---")
+    st.markdown("<small style='color:#64748b;'>Powered by FCJ Venture Builder • TR4CTION Q1</small>", unsafe_allow_html=True)
 
 
-def generate_founder_id(startup: str, founder: str) -> str:
-    """Gera um ID simples e legível para o founder."""
-    base = f"{startup}_{founder}".lower().replace(" ", "_")
-    return base[:60]
-
-
+# Se não tiver identificação, trava.
 if not (startup_name and founder_name):
-    st.sidebar.warning("Preencha os dados acima para iniciar o atendimento.")
     st.stop()
 
-founder_id = generate_founder_id(startup_name, founder_name)
-st.sidebar.success(f"ID gerado automaticamente: `{founder_id}`")
 
-# Reset de sessão ao trocar founder
-if "session_owner" not in st.session_state:
-    st.session_state.session_owner = founder_id
+# =============================================
+# HEADER PREMIUM
+# =============================================
+st.markdown("<div class='header-title'>🚀 TR4CTION Agent — FCJ Venture Builder</div>",
+            unsafe_allow_html=True)
 
-if st.session_state.session_owner != founder_id:
-    st.session_state.session_owner = founder_id
-    st.session_state.history = []
-
-
-# ============================================
-# ETAPAS DO Q1
-# ============================================
-# Usa a ordem definida em STEP_ORDER
-step_labels = [STEP_CONFIG[key]["label"] for key in STEP_ORDER]
-
-etapa_label = st.selectbox("Escolha a etapa:", step_labels)
-step_key = LABEL_TO_STEP_KEY[etapa_label]
-
-st.write(f"## 📌 Etapa atual: **{etapa_label}**")
+st.markdown("<div class='header-sub'>Assistente Estratégico para Diagnóstico, ICP, SWOT e Persona</div>",
+            unsafe_allow_html=True)
+st.markdown("")
 
 
-# ============================================
-# PIPELINE PREMIUM ANIMADO
-# ============================================
-def render_pipeline_animated(current_step: str):
-    steps = {
-        "diagnostico": "Diagnóstico",
-        "icp_swot": "ICP + SWOT",
-        "persona_jtbd": "Persona + JTBD",
-    }
+# =============================================
+# ETAPAS (SELECT)
+# =============================================
+step_labels = [STEP_CONFIG[k]["label"] for k in STEP_ORDER]
+stage_label = st.selectbox("Selecione a etapa:", step_labels)
+step_key = LABEL_TO_STEP_KEY[stage_label]
 
-    step_keys_order = list(steps.keys())
-    current_index = step_keys_order.index(current_step)
-
-    html = """
-    <style>
-    .pipeline-container {
-        margin-top: 10px;
-        margin-bottom: 25px;
-    }
-    .pipeline {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-    }
-    .step-block {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-    .step-circle {
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        border: 2px solid #cccccc;
-    }
-    .step-label {
-        font-size: 0.9rem;
-        white-space: nowrap;
-    }
-    .done .step-circle {
-        background: #16a34a;
-        border-color: #16a34a;
-    }
-    .current .step-circle {
-        background: #facc15;
-        border-color: #eab308;
-        animation: pulse 1.4s infinite;
-    }
-    .future .step-circle {
-        background: transparent;
-        border-color: #6b7280;
-    }
-    .connector {
-        flex: 1;
-        height: 2px;
-        background: #6b7280;
-        opacity: 0.4;
-    }
-    .connector.done {
-        background: #16a34a;
-        opacity: 0.9;
-    }
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
-    </style>
-    <div class="pipeline-container">
-      <div class="pipeline">
-    """
-
-    for i, s_key in enumerate(step_keys_order):
-        if i < current_index:
-            status_class = "done"
-        elif i == current_index:
-            status_class = "current"
-        else:
-            status_class = "future"
-
-        html += f"""
-        <div class="step-block {status_class}">
-          <div class="step-circle"></div>
-          <div class="step-label">{steps[s_key]}</div>
-        </div>
-        """
-
-        if i < len(step_keys_order) - 1:
-            connector_class = "done" if i < current_index else ""
-            html += f'<div class="connector {connector_class}"></div>'
-
-    html += "</div></div>"
-
-    st.markdown("### 📊 Pipeline de Progresso")
-    st.markdown(html, unsafe_allow_html=True)
+st.markdown("")
 
 
-render_pipeline_animated(step_key)
-
-
-# ============================================
-# AGENTE
-# ============================================
-agent = Tr4ctionAgent(startup_name)
-
+# =============================================
+# HISTÓRICO
+# =============================================
 if "history" not in st.session_state:
     st.session_state.history = []
 
-MAX_HISTORY = 20  # limite para não explodir a sessão
+agent = Tr4ctionAgent(startup_name)
 
 
-# ============================================
-# CAIXA DE TEXTO DO FOUNDER
-# ============================================
-st.markdown("### 💬 Conversa com o Agente TR4CTION")
+# =============================================
+# ÁREA DE CHAT
+# =============================================
+st.markdown("## 💬 Chat")
 
-user_input = st.text_area(
-    "Digite sua mensagem:",
-    placeholder="Ex: Minha startup vende X e resolve Y...",
-    height=120,
-)
+chat_container = st.container()
 
-btn = st.button("Enviar 🚀")
+with chat_container:
+    for msg in st.session_state.history:
+        if msg["role"] == "user":
+            st.markdown(f"<div class='msg-user'>{msg['content']}</div>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<div class='msg-agent'>{msg['content']}</div>", unsafe_allow_html=True)
 
 
-# ============================================
-# PROCESSAMENTO DO AGENTE
-# ============================================
-if btn:
-    if not user_input.strip():
-        st.warning("Digite algo antes de enviar.")
-    else:
+# =============================================
+# ENTRADA DO FUNDER
+# =============================================
+st.markdown("## ✏️ Enviar mensagem")
+user_input = st.text_area("", placeholder="Digite aqui sua mensagem...")
+
+if st.button("Enviar"):
+    if user_input.strip():
         st.session_state.history.append({"role": "user", "content": user_input})
-
-        # Limita histórico
-        if len(st.session_state.history) > MAX_HISTORY:
-            st.session_state.history = st.session_state.history[-MAX_HISTORY:]
-
-        try:
-            response = agent.ask(
-                step_key=step_key,
-                history=st.session_state.history,
-                user_input=user_input,
-                model="gpt-4.1-mini",
-            )
-
-            st.session_state.history.append(
-                {"role": "assistant", "content": response}
-            )
-
-            register_answer(
-                founder_id=founder_id,
-                startup=startup_name,
-                founder_name=founder_name,
-                step=step_key,
-                answer_text=response,
-            )
-
-        except Exception as e:
-            st.error("Erro ao consultar o agente. Verifique logs e configuração.")
-            st.exception(e)
-
-
-# ============================================
-# HISTÓRICO DA CONVERSA (CHAT VISUAL)
-# ============================================
-st.markdown("### 📝 Histórico da Conversa")
-
-for msg in st.session_state.history:
-    if msg["role"] == "user":
-        st.markdown(
-            f"""
-            <div style="padding:12px;border-radius:8px;background:#e7e7e7;margin-bottom:10px;">
-            <strong>👤 Você:</strong><br>{msg['content']}
-            </div>
-            """,
-            unsafe_allow_html=True,
+        
+        response = agent.ask(
+            step_key=step_key,
+            history=st.session_state.history,
+            user_input=user_input
         )
-    else:
-        st.markdown(
-            f"""
-            <div style="padding:12px;border-radius:8px;background:#eef7ff;margin-bottom:10px;">
-            <strong>🤖 Agente:</strong><br>{msg['content']}
-            </div>
-            """,
-            unsafe_allow_html=True,
+        
+        st.session_state.history.append({"role": "assistant", "content": response})
+        
+        register_answer(
+            founder_id=founder_id,
+            startup=startup_name,
+            founder_name=founder_name,
+            step=step_key,
+            answer_text=response
         )
 
-
-# ============================================
-# BOTÃO LIMPAR
-# ============================================
-st.sidebar.markdown("---")
-if st.sidebar.button("🧹 Limpar conversa"):
-    st.session_state.history = []
-    st.sidebar.success("Histórico apagado!")
+        st.rerun()
