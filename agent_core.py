@@ -1,17 +1,9 @@
-"""
-Cérebro do Agente TR4CTION.
-
-Responsável por:
-- Montar o histórico de mensagens
-- Chamar a API da OpenAI
-"""
-
+# agent_core.py
 from typing import List, Dict
-
 from openai import OpenAI
-
-from config import OPENAI_API_KEY, DEFAULT_OPENAI_MODEL
+from config import OPENAI_API_KEY
 from prompts_q1 import STEP_PROMPTS
+from retriever import search_memory
 
 
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -19,61 +11,72 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 class Tr4ctionAgent:
     """
-    Agente TR4CTION responsável por conduzir o founder
-    nas etapas do Q1, de forma consultiva e operacional.
+    Agente TR4CTION com RAG (busca semântica).
+    Agora ele usa o conteúdo oficial das aulas como memória.
     """
 
-    def __init__(self, startup_name: str) -> None:
+    def __init__(self, startup_name: str):
         self.startup_name = startup_name
 
+    # --------------------------------------------------------
+    # MONTA MENSAGENS (Prompt + Memória + Histórico + Usuário)
+    # --------------------------------------------------------
     def build_messages(
         self,
         step_key: str,
         history: List[Dict[str, str]],
         user_input: str,
     ) -> List[Dict[str, str]]:
-        """
-        Monta o histórico de mensagens no formato esperado pela API.
-        """
-        system_prompt = STEP_PROMPTS.get(step_key)
 
-        if not system_prompt:
-            # fallback seguro
-            system_prompt = (
-                "Você é um agente de marketing da FCJ. "
-                "Ajude o usuário com orientações claras e práticas."
-            )
+        base_prompt = STEP_PROMPTS.get(step_key)
 
-        messages: List[Dict[str, str]] = [
+        if not base_prompt:
+            base_prompt = "Você é um agente da FCJ. Responda com clareza e profundidade."
+
+        # 🔍 Busca semântica no TR4CTION
+        memory_chunks = search_memory(user_input, top_k=5)
+        memory_text = "\n\n".join(memory_chunks)
+
+        memory_block = (
+            "### CONTEXTO OFICIAL DO TR4CTION (RAG)\n"
+            "Use APENAS informações abaixo caso sejam relevantes.\n"
+            "Não invente nada que não esteja no material TR4CTION.\n\n"
+            f"{memory_text}\n\n"
+        )
+
+        # Mensagem inicial
+        messages = [
             {
                 "role": "system",
                 "content": (
-                    system_prompt
-                    + f"\n\nStartup atual: {self.startup_name}\n"
+                    base_prompt
+                    + f"\n\nStartup atual: {self.startup_name}\n\n"
+                    + memory_block
                 ),
             }
         ]
 
-        # histórico vindo do Streamlit (user/assistant)
-        for item in history:
-            messages.append({"role": item["role"], "content": item["content"]})
+        # Histórico
+        for msg in history:
+            messages.append({"role": msg["role"], "content": msg["content"]})
 
-        # última mensagem do usuário
+        # Pergunta atual
         if user_input:
             messages.append({"role": "user", "content": user_input})
 
         return messages
 
+    # --------------------------------------------------------
+    # CHAMA O MODELO (agora com RAG)
+    # --------------------------------------------------------
     def ask(
         self,
         step_key: str,
         history: List[Dict[str, str]],
         user_input: str,
-        model: str = DEFAULT_OPENAI_MODEL,
+        model: str = "gpt-4.1-mini",
     ) -> str:
-        """
-        Envia a conversa para o modelo da OpenAI e retorna a resposta.
-        """
+
         messages = self.build_messages(step_key, history, user_input)
 
         response = client.chat.completions.create(
@@ -82,4 +85,4 @@ class Tr4ctionAgent:
             temperature=0.3,
         )
 
-        return response.choices[0].message.content or ""
+        return response.choices[0].message.content

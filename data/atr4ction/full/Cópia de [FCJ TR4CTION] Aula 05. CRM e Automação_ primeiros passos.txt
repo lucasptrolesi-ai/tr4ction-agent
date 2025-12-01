@@ -1,0 +1,100 @@
+Como organizar seus leads e estruturar automações que aceleram a conversão
+CRM E AUTOMAÇÃO: PRIMEIROS PASSOS
+POR QUE ESSA 
+AULA AGORA?
+Nas últimas aulas, mapeamos os gatilhos de conversão e estruturamos as jornadas pós-lead.
+Agora, chegou o momento de trazer isso para a prática, organizando o fluxo comercial e conectando marketing e vendas por meio do CRM e da automação.
+OBJETIVOS 
+DA AULA
+Hoje vamos entender como:
+Centralizar informações de leads e oportunidades;
+Automatizar as primeiras interações e follow-ups;
+Criar um pipeline de vendas claro, com etapas bem definidas;
+Integrar CRM e marketing para garantir continuidade na jornada.
+O QUE É UM CRM E 
+POR QUE É ESSENCIAL
+Ele é o cérebro da sua operação comercial
+CRM (Customer Relationship Management) é o sistema que organiza todas as interações com seus leads e clientes.
+Mais do que uma planilha de contatos, ele mostra quem está pronto para comprar, quem precisa de nutrição e onde estão as oportunidades travadas.
+O QUE É UM CRM E 
+POR QUE É ESSENCIAL
+Benefícios:
+Visão completa do funil de vendas
+Histórico de interações e atividades
+Priorização de leads quentes
+Integração com e-mail e automações
+Exemplos: HubSpot, Pipedrive, RD Station CRM, Moskit, Agendor, Salesforce.
+ESTRUTURANDO SEU 
+PIPELINE COMERCIAL
+O funil dentro do CRM.
+Um pipeline bem configurado ajuda a visualizar o progresso dos leads até a venda.
+Defina etapas claras e objetivas, de acordo com o ciclo de vendas da sua startup.
+Dica: use campos personalizados para registrar dados importantes (tamanho da empresa, setor, ticket médio, origem do lead, etc).
+EXEMPLOS DE 
+PIPELINE COMERCIAL
+EXEMPLOS DE 
+PIPELINE COMERCIAL
+AUTOMAÇÃO: ONDE COMEÇAR
+Deixe o sistema trabalhar por você
+A automação ajuda a manter o relacionamento ativo,
+sem depender 100% de esforço manual.
+Ela é ideal para o início da jornada, quando o volume de leads aumenta e o time precisa ganhar escala.
+
+Ferramentas: HubSpot, ActiveCampaign, RD Station, Pipedrive + Zapier.
+EXEMPLOS DE 
+AUTOMAÇÕES
+INTEGRAÇÃO ENTRE MARKETING E VENDAS
+Marketing e vendas falando a mesma língua
+A conexão entre CRM e automação garante continuidade no funil.
+Quando o lead realiza uma conversão, o marketing envia o dado automaticamente ao CRM, com todas as informações necessárias para o time comercial agir.
+INTEGRAÇÃO ENTRE MARKETING E VENDAS
+Fluxo ideal: 1️⃣ Conversão → formulário na LP 2️⃣ Entra em automação de boas-vindas 3️⃣ Se engajar → vira MQL 4️⃣ CRM notifica o vendedor 5️⃣ Oportunidade é criada no pipeline
+Dica: configure alertas automáticos e crie campos padronizados entre CRM e automação para evitar perda de dados.
+TEMPLATES DISPONÍVEIS 
+Organize sua operação comercialUse os templates para aplicar o que aprendemos hoje:
+Template de Pipeline Comercial: Estruture as etapas do seu funil de vendas.
+Mapa de Automações Simples: Crie fluxos automáticos de e-mails e follow-ups.
+Checklist de Integração CRM + Marketing: Garanta que tudo funcione junto.
+ACESSAR TEMPLATES
+ANÁLISE FINAL E DÚVIDAS
+REFLEXÃO FINAL
+DA AULA
+Automação não substitui relacionamento, ela o potencializa.
+O CRM e as automações são ferramentas poderosas, mas o que realmente faz diferença é como você as usa.Elas liberam tempo, organizam processos e garantem que nenhum lead seja esquecido.
+Pense nisso:Você está usando a automação para encantar o lead ou apenas para enviar e-mails?
+ENTREGÁVEIS E 
+PRÓXIMOS PASSOS
+Entregáveis:
+Pipeline comercial configurado
+Mapa de automações básicas ativo
+Checklist de integração CRM + marketing preenchido
+Prazo: até a próxima aula. 
+ENTREGÁVEIS E 
+PRÓXIMOS PASSOS
+Na próxima aula vamos:Setup Técnico: garantindo rastreio e integrações
+Você vai aprender a:
+Configurar Pixel Meta, Google Tag, etc.
+Implantar eventos essenciais no GA4
+Configurar conversões para Google Ads e Meta Ads
+Criar eventos personalizados (ex: clique em CTA, scroll, envio de formulário)
+Validar tudo com Tag Assistant, Teste de Eventos
+Construir o seu Mapa Técnico de Rastreio
+Preparar o terreno para análises reais de CAC, CPL e conversão
+ENTREGÁVEIS E 
+PRÓXIMOS PASSOS
+Por que isso é importante?
+Sem rastreamento → não existe otimização.
+Sem eventos → as campanhas “trabalham cegas”.
+A partir de agora, vamos garantir que tudo que for ao ar seja mensurável.
+PERGUNTAS, 
+DÚVIDAS, 
+INSIGHTS?
+Espaço para perguntas, trocas entre startups, aprendizados em comum.
+
+“O que ficou mais claro pra você hoje?”
+
+“Crescer não é fazer mais. É fazer o certo.”
+
+Nos vemos na próxima aula!
+
+OBRIGADO!

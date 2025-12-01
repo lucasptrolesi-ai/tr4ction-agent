@@ -1,0 +1,170 @@
+Entendendo o tamanho do mercado e os concorrentes para posicionar sua startup com vantagem.
+ TAM/SAM/SOM + BENCHMARK + CANVAS DIFERENCIAÇÃO
+POR QUE ESSA
+AULA AGORA?
+Já sabemos:
+Onde sua startup está (Diagnóstico).
+Quem é seu cliente ideal (ICP, Persona, JTBD).
+O que ele valoriza (Jornada, Matriz de Atributos, PUV).
+Agora precisamos entender onde sua startup está competindo - e contra quem. Essa aula ajuda a responder:
+Qual o tamanho real da sua oportunidade?
+Como seu mercado se comporta?
+O que seus concorrentes estão prometendo (e entregando)?
+E como você pode se destacar de verdade?
+QUAIS OS OBJETIVOS 
+DA AULA
+Nos preparar para tomadas de decisão:
+Qual canal priorizar?
+Como se posicionar?
+Que narrativa construir para atrair o mercado?
+
+O que vamos fazer:
+Entender o tamanho do mercado e o potencial de crescimento da sua startup (TAM / SAM / SOM);
+Analisar a concorrência para encontrar brechas e oportunidades (Benchmark);
+Construir um posicionamento claro e diferenciado com o Canvas de Diferenciação.
+TAM / SAM / SOM
+O que é TAM / SAM / SOM?
+Três siglas que ajudam a responder uma pergunta:
+“Qual o tamanho real do mercado que posso atingir - hoje e no futuro?”
+TAM (Total Addressable Market):É o tamanho total do mercado, considerando todos os potenciais clientes no mundo que têm o problema que sua solução resolve.
+TAM / SAM / SOM
+O que é TAM / SAM / SOM?
+SAM (Serviceable Available Market):É a fatia do TAM que sua startup de fato consegue atender hoje - por geografia, tipo de cliente ou canal.
+SOM (Serviceable Obtainable Market):É a parte do SAM que você realisticamente pode conquistar no curto/médio prazo, com sua estrutura e recursos atuais.
+TAM / SAM / SOM
+Por que isso importa?
+
+Entender esses números evita promessas vazias de “mercado bilionário”.
+Mostra ao investidor que você sabe onde pisa - e onde pode chegar.
+Ajuda a priorizar os segmentos certos e definir metas realistas.
+É base para projeções financeiras, estratégia de vendas e plano de crescimento.
+TAM / SAM / SOM
+Exemplo prático ClínicaTech (SaaS B2B)
+
+TAM: 120 mil clínicas e consultórios que precisam digitalizar seus processos de agendamento e prontuário eletrônico.
+SAM:35 mil clínicas que têm estrutura mínima para adotar um sistema (computador, internet) e estão em grandes centros urbanos.
+SOM:1.500 clínicas que a startup consegue atingir com o time, orçamento de mídia e canais atuais nos próximos 18 meses.
+TAM / SAM / SOM
+Como calcular ou buscar esses dados?
+Não precisa de dados perfeitos. Precisa de lógica e fontes confiáveis.
+TAM:Use dados públicos, pesquisas de mercado, IBGE.Fórmula: Nº total de clientes potenciais × ticket médio anual.
+SAM:Filtre o TAM por localização, ICP, volume de atendimento.Ex: Clínicas com mais de 2 funcionários.
+SOM:Aplique critérios realistas: quantas contas você consegue atender por mês × 12.Considere: time de vendas, budget de mídia, CAC.
+TAM / SAM / SOM
+TAM / SAM / SOM
+Ferramenta: template TAM / SAM / SOM
+Você vai preencher:
+Qual é o mercado total para sua solução?Qual recorte você pode realmente atender?Qual fatia é viável conquistar com seus recursos atuais?
+📌 Lembre de usar fontes! (IBGE, Sebrae, Statista, pesquisas, etc.)
+ACESSAR
+BENCHMARK
+O que é Benchmarking?
+Benchmarking é a prática de estudar outras empresas (concorrentes diretos e indiretos) para entender:
+O que elas fazem bem (e mal);
+Como se posicionam;
+Quais canais usam;
+Como se comunicam;
+Onde estão seus diferenciais.
+Mas atenção: benchmarking não é copiar.
+É entender o todo, enxergar oportunidades e encontrar o espaço ideal para a sua proposta.
+BENCHMARK
+Por que fazer Benchmark?
+Fazer benchmark não é copiar.O objetivo é clareza - não comparação.
+É entender o contexto em que sua startup está inserida;
+Enxergar como você pode se destacar de forma autêntica e relevante;
+Identificar brechas que ninguém está explorando;
+Encontrar inspiração para inovar com estratégia.
+BENCHMARK
+O que vamos mapear?
+A ideia aqui é analisar seus concorrentes diretos ou indiretos com base em pontos críticos da experiência do cliente. Isso te ajuda a encontrar caminhos de diferenciação real.
+O que observar em cada coluna:
+Tipo de Solução: É SaaS, serviço, produto físico, plataforma, etc.
+Produto: Quais funcionalidades ou entregas principais? Qual é o principal foco?
+BENCHMARK
+O que vamos mapear?
+Marketing: Como se comunicam? Canais ativos? Posicionamento? Qual tom de voz?
+Vendas: Existe demo? Onboarding? Processo consultivo ou autoatendimento?
+Atendimento / Suporte: Qual o canal? É rápido? Tem reclamações públicas?
+Preço: É transparente? É caro? Qual modelo (mensal, por uso, plano escalável)?
+BENCHMARK
+O que vamos mapear?
+Forças Percebidas: O que o cliente vê como positivo (mesmo que você discorde)?
+Fraquezas Percebidas: O que clientes reclamam? Pontos negativos evidentes?
+Oportunidades para sua Startup: Onde você pode fazer diferente e melhor?
+BENCHMARK
+Ferramentas úteis para fazer o Benchmark de forma legal:
+SimilarWeb (tráfego e fontes de aquisição);
+Meta Ads Library (anúncios ativos no Facebook/Instagram);
+LinkedIn (estrutura de time, crescimento, posts);
+Google Ads Transparency Center (anúncios no Google).
+Dentre outras.
+BENCHMARK
+Ferramentas complementares:
+Feedbacks de clientes deles (Reviews no ReclameAqui, Trustpilot, G2);
+Landing pages e e-mails que você pode simular/testar como lead;
+Redes sociais dos concorrentes (comentários, interações com o consumidor);
+Teste reais de contato com o concorrente, mostrando interesse no produto / serviço.
+BENCHMARK
+BENCHMARK
+Ferramenta: template Benchmark
+Dicas:
+Preencha com 5 concorrentes diretos ou soluções parecidas.
+Seja criterioso: o objetivo é enxergar onde sua startup pode se destacar.
+Essa análise será a base para o próximo passo - o Canvas de Diferenciação.
+ACESSAR
+CANVAS DADIFERENCIAÇÃO
+O que é o Canvas da Diferenciação?O Canvas da Diferenciação é uma ferramenta estratégica que ajuda sua startup a responder:
+“O que só a gente faz desse jeito - e que realmente importa pro cliente?”
+Com ele, você:
+Conecta os atributos de valor com pontos fortes.
+Cria um posicionamento relevante.
+Enxerga onde investir energia para se destacar no mercado.
+CANVAS DADIFERENCIAÇÃO
+Por que é importante?Porque prometer “atendimento humanizado” ou “solução completa” virou default. Todo mundo diz.
+Com o canvas da diferenciação, você:
+Deixa claro o seu diferencial no que realmente importa.
+Constrói uma mensagem mais única e memorável.
+Evita competir por preço - e passa a competir por valor.
+Identifica onde está sua oportunidade real no mercado.
+CANVAS DADIFERENCIAÇÃO
+Como funciona?No Canvas da Diferenciação temos que mapear 3 blocos:
+Atributos relevantes para o clienteO que seu cliente realmente se importa na hora de decidir?
+Pontos fortes da sua startupO que você já faz bem hoje? (processos, produto, equipe, etc.)
+Oportunidade de diferenciaçãoOnde esses dois itens se cruzam? Ou seja, o que você entrega bem e que poucos concorrentes oferecem direito?
+Esse é o seu diferencial estratégico.
+CANVAS DADIFERENCIAÇÃO
+Dicas de como preencher:
+Foque no que é valorizado pelo cliente. Use os dados reais da Matriz de Atributos + Benchmark.
+Mantenha o foco em como o cliente percebe (não só o que você acha bom).Onde você entrega bem? Onde o mercado falha?
+Evite ser genérico. Seja específico.Genérico → “Atendimento humanizado”Específico → “Suporte por WhatsApp com tempo médio de 2min”
+CANVAS DADIFERENCIAÇÃO
+CANVAS DADIFERENCIAÇÃO
+Ferramenta: template Canvas da Diferenciação
+Dicas:
+Pegue os principais atributos que seu cliente valoriza.
+Liste o que sua startup já entrega bem.
+Identifique os cruzamentos: onde está sua vantagem competitiva real?
+ACESSAR
+PRÓXIMOS PASSOS E DÚVIDAS
+PRÓXIMOS PASSOS
+Entregáveis:
+TAM / SAM / SOM com base no seu mercado.
+Benchmark preenchido com 5 concorrentes.
+Canvas de Diferenciação 5 diferenciais claros.
+Prazo: até a próxima aula.
+
+Na próxima aula vamos:
+Definir o propósito e a visão de futuro com o Golden Circle;
+Criar o Posicionamento Verbal da sua startup;
+Construir uma narrativa que conecta e diferencia.
+PERGUNTAS, 
+DÚVIDAS, 
+INSIGHTS?
+Espaço para perguntas, trocas entre startups, aprendizados em comum.
+
+“O que ficou mais claro pra você hoje?”
+“Crescer não é fazer mais. É fazer o certo.”
+
+Nos vemos na próxima aula!
+
+OBRIGADO!

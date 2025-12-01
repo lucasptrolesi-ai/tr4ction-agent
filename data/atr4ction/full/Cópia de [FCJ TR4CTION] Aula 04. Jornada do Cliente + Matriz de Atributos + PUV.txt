@@ -1,0 +1,186 @@
+Entendendo a experiência do cliente para construir uma proposta de valor que conecta.
+ JORNADA DO CLIENTE + MATRIZ DE ATRIBUTOS + PUV
+POR QUE ESSA
+AULA AGORA?
+Já sabemos:
+Onde sua startup está (Diagnóstico e CSD)
+Quais seus pontos fortes e fracos (SWOT)
+Quem é o cliente ideal e o que ele quer (ICP, JTBD e Persona)
+Agora é hora de conectar os pontos e olhar para a experiência completa do cliente:
+Como ele vive a jornada de compra?
+O que realmente valoriza?
+Como mostramos esse valor de forma única?
+
+QUAIS OS 
+OBJETIVOS 
+DA AULA
+O que vamos fazer:
+
+Mapear a jornada real do cliente: com foco nas ações, dores, emoções, canais e oportunidades.
+Identificar os atributos valorizados pelo cliente (mesmo os que ele não fala).
+Construir a base para criar uma Proposta Única de Valor (PUV).
+JORNADADO CLIENTE
+O que é a jornada do cliente?
+A jornada do cliente é o caminho que uma pessoa percorre desde que identifica um problema até se tornar (ou não) seu cliente fiel.
+
+Ela ajuda a entender:
+O que o cliente pensa, sente e faz em cada etapa;
+Onde estão os atritos, dúvidas e objeções;
+Quando e como se comunicar com ele;
+Quais canais e mensagens funcionam melhor.
+JORNADA DO CLIENTE
+Por que isso importa?
+Sem jornada:
+Você empurra conteúdo para quem nem sabe que tem um problema;
+Fala demais de produto e pouco do que o cliente quer ouvir;
+Perde oportunidades de engajamento e vendas.
+
+Com jornada:
+Você fala a coisa certa na hora certa;
+Cria experiências mais humanas e eficazes;
+Otimiza canais, conteúdo, time e orçamento.
+JORNADA DO CLIENTE
+Etapas da jornada:
+A jornada pode variar por tipo de negócio, mas em geral segue 5 grandes etapas:
+Descoberta: “Tenho um problema?”
+Consideração: “Quais as opções para resolver?”
+Decisão: “Qual solução faz mais sentido pra mim?”
+Onboarding e Uso: “Como usar e ter sucesso com isso?”
+Retenção e Indicação: “Vale a pena continuar e recomendar?”
+JORNADA DO CLIENTE
+Em cada etapa, vamos mapear:
+Ações: O que o cliente faz? Quais informações busca? Qual o contexto dessa etapa?
+Pesquisa sobre sistemas de agendamento e gestão de clínicas. Compara funcionalidades. Conversa com colegas.
+Necessidades e Dores: O que ele quer alcançar ou evitar aqui? Quais são suas principais frustrações?
+Quer uma solução que evite erros de agenda e  reduza o tempo perdido com tarefas administrativas.
+Pontos de contato: Onde ele interage com sua marca? (site, redes, app, vendas, atendimento...)
+Site da ClínicaTech, blog, vídeos no YouTube, atendimento via WhatsApp.
+JORNADA DO CLIENTE
+Em cada etapa, vamos mapear:
+4. Sentimentos / Emoções: Como ele se sente nessa etapa? Emoções ajudam a entender o que está funcionando ou não.
+Esperançosa, mas desconfiada por experiências ruins anteriores com tech.
+5. Bastidores: O que sua startup está fazendo nessa etapa? Existe suporte real para esse momento?
+Marketing rodando campanhas pagas e orgânicas. SDR pronto para tirar dúvidas.
+JORNADA DO CLIENTE
+Em cada etapa, vamos mapear:
+6. Oportunidade de melhoria: O que poderia ser melhorado, facilitado ou criado nessa etapa?
+Melhorar FAQ do site, incluir comparativo de funcionalidades, cases e provas sociais.
+
+7. Dono do processo: Quem é o responsável por essa etapa internamente? (marketing, CS, produto...)
+Marketing (atração e conteúdo) + Pré-vendas (respostas e atendimento inicial).
+JORNADA DO CLIENTE
+JORNADA DO CLIENTE
+JORNADA DO CLIENTE
+Ferramenta: template Jornada do Cliente
+
+Dicas:
+Combine com o ICP e a persona preenchida.
+Caso necessário, faça adaptações no seu template da jornada.
+Use no mínimo 3 etapas com os blocos principais.
+ACESSAR
+MATRIZ DEATRIBUTOS
+O que é a matriz de atributos?
+É uma ferramenta simples para entender o que realmente pesa na decisão do cliente.
+Ela responde:
+“O que meu cliente valoriza na hora de escolher uma solução como a minha?”
+Ela te ajuda a enxergar:
+O que você faz bem (e precisa destacar);
+O que precisa melhorar;
+O que o mercado promete… mas não entrega.
+MATRIZ DE ATRIBUTOS
+Por que usar a matriz de atributos?
+Evita falar em diferenciais e benefícios que o cliente não valoriza
+Ajuda a sair do “marketing genérico”
+Mostra onde sua startup pode ser melhor que a média do mercado
+Prepara o cenário para criar uma Proposta Única de Valor clara e convincente
+MATRIZ DE ATRIBUTOS
+Como funciona na prática?
+Vamos listar os atributos que o cliente considera importantes, e avaliar:
+Valor percebido pelo cliente (nota 1-5);
+Nível de entrega atual da sua startup (nota 1-5);
+GAP: diferença entre valor percebido x nível de entrega (quanto maior o GAP, maior a urgência).
+Vamos mapear:
+Produto / Serviço;
+Atendimento / Suporte;
+Modelo de Negócio / Preço;
+Resultado / Valor Entregue;
+Experiência / Marca / Relacionamento.
+MATRIZ DE ATRIBUTOS
+Exemplo:Atributo: Facilidade de uso da plataforma
+Valor percebido pelo cliente (de forma geral, não com base no seu atendimento): 5
+Nível de entrega atual (essa nota é com base no seu atendimento): 2
+Valor percebido alto (4 ou 5) e entrega baixa (1 ou 2) = alerta vermelho 🔴
+→ Estamos falhando em algo que o cliente valoriza muito→ Melhorar a usabilidade para evitar churn
+MATRIZ DE ATRIBUTOS
+Exemplo:Atributo: Suporte humanizado
+Valor percebido pelo cliente (de forma geral, não com base no seu atendimento): 1
+Nível de entrega atual (essa nota é com base no seu atendimento): 4
+Atributos com valor percebido médio ou baixo, mas entrega muito boa = possível desperdício 🟡
+→ Estamos investindo energia onde o cliente não vê valor→ Reavalie se vale a pena continuar reforçando/investindo nisso
+MATRIZ DE ATRIBUTOS
+Exemplo:Atributo: Disponibilidade da equipe técnica
+Valor percebido pelo cliente (de forma geral, não com base no seu atendimento): 5.
+Nível de entrega atual (essa nota é com base no seu atendimento): 5.
+Atributos com valor alto + entrega boa (4/4 ou 5/5) = diferencial competitivo 🟢
+→ Use isso como argumento na sua PUV e comunicação
+MATRIZ DE ATRIBUTOS
+MATRIZ DE ATRIBUTOS
+Ferramenta: template Matriz de Atributos
+Dicas:
+Preencha os campos com base em cada atributo relevante.
+Use notas de 1 a 5 (sendo 1 = baixo, 5 = alto).
+Priorize os atributos com maior GAP para ações futuras.
+ACESSAR
+PUV(Proposta Única de Valor)
+O que é PUV?A Proposta Única de Valor é a promessa clara do valor que sua startup entrega para um público específico, de forma que se destaca da concorrência. É a resposta para:
+“Por que um cliente ideal escolheria você - e não qualquer outra opção?”
+PUV
+O que uma boa PUV precisa ter?Uma boa PUV não precisa ser “bonita”. Precisa ser clara e específica.
+Ela deve responder 4 perguntas:
+Para quem você é ideal? (ICP)
+Que problema você resolve? (problema relevante)
+Qual benefício você entrega? (resultado desejado)
+O que te torna único? (diferencial)
+PUV
+Fórmula prática?“Ajudamos [ICP] que enfrentam [problema relevante] a alcançar [resultado desejado], através de [diferencial ou abordagem única].”
+Exemplo ruim (vaga demais):“Ajudamos empresas a crescer com nosso sistema de gestão.”
+Exemplo bom (PUV da ClínicaTech):“Ajudamos clínicas médicas que perdem pacientes por falhas na agenda a organizar sua rotina com um sistema de gestão simples, rápido e com suporte humanizado.”
+PUV
+De onde vem os insumos para construir sua PUV?
+Matriz de Atributos → O que o cliente valoriza × o que você entrega bem
+JTBD Canvas → O que o cliente quer resolver de verdade
+Persona Estratégica → O que trava e o que impulsiona a decisão
+Análise SWOT → Onde estão seus pontos fortes e diferenciais reais
+PUV
+PUV
+Ferramenta: template PUV
+Dicas:
+Evite jargões tipo “solução completa e inovadora”.
+Use linguagem simples, que seu cliente falaria.
+Valide com clientes reais: eles entendem? Faz sentido pra eles?
+Se possível, teste variações em anúncios e pitch.
+
+ACESSAR
+PRÓXIMOS PASSOS E DÚVIDAS
+PRÓXIMOS PASSOS
+Entregáveis:
+Jornada do cliente preenchida.
+Matriz de atributos mapeada.
+PUV construída.
+Prazo: até a próxima aula.
+
+Na próxima aula vamos:
+Estimar o tamanho real do seu mercado (TAM/SAM/SOM)
+Analisar concorrência e diferenciais de forma estruturada (Benchmark)
+Construir seu Canvas de Diferenciação: o que te destaca de verdade?
+PERGUNTAS, 
+DÚVIDAS, 
+INSIGHTS?
+Espaço para perguntas, trocas entre startups, aprendizados em comum.
+
+“O que ficou mais claro pra você hoje?”
+“Crescer não é fazer mais. É fazer o certo.”
+
+Nos vemos na próxima aula!
+
+OBRIGADO!

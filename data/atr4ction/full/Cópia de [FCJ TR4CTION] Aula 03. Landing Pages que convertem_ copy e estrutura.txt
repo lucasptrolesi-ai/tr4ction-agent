@@ -1,0 +1,180 @@
+Aplicando técnicas de copywriting e a estrutura AIDA / PAS para guiar o usuário até a ação desejada.
+LANDING PAGES QUE CONVERTEM: COPY E ESTRUTURA
+POR QUE ESSA 
+AULA AGORA?
+Nas últimas aulas, estruturamos o calendário e o planejamento de mídia, definindo onde e como vamos colocar a campanha no ar.
+Agora, é hora de começar a produção e o ponto de partida é a Landing Page.
+Por que ela é tão importante?
+É o principal ponto de conversão do tráfego pago e orgânico;
+Reúne a mensagem central da campanha e a oferta;
+Conecta as etapas do funil e orienta as demais peças (ads, e-mails, fluxos, etc.).
+O PAPEL DA LANDING
+PAGE NA ESTRATÉGIA
+Landing Page ≠ Página institucionalEla tem um único objetivo: converter.
+Características essenciais:
+Foco em uma ação principal (CTA único) 
+Copy persuasiva e centrada na dor e benefício do cliente.
+Design simples e visual que guia o olhar até a conversão.
+Prova social e autoridade.
+Rastreamento e integração com CRM e ferramenta de automação.
+ESTRUTURA DE LANDING 
+PAGE QUE CONVERTE
+Temos que considerar ao menos 5 seções-chave:
+Hero Section:Título + Subtítulo + CTA + imagem/vídeo principal.
+Benefícios / Solução:Explique como resolver a dor principal do cliente. 
+Prova Social: Depoimentos + Cases + Logos de Parceiros / Clientes + Resultados
+Detalhes e Diferenciais: Recursos + Comparativos + Bônus 
+CTA Final:Reforço da chamada para ação (escassez, urgência…)
+ESTRUTURA DE LANDING 
+PAGE QUE CONVERTE
+ATENÇÃO PARA O FORMULÁRIO DA PÁGINA:
+O formulário é onde a conversão acontece.É onde o  visitante decide se confia o suficiente para dar o próximo passo.
+
+Onde posicionar:
+Idealmente na primeira ou segunda seção da LP, visível sem precisar rolar muito.
+Incluir vários CTAs ao longo da página (em outras seções), sempre com âncora para o formulário (ao menos 2 vezes).
+ESTRUTURA DE LANDING 
+PAGE QUE CONVERTE
+ATENÇÃO PARA O FORMULÁRIO DA PÁGINA:
+Boas práticas:
+Menos é mais: quanto mais campos, maior a chance de desistência.
+Peça apenas o essencial (ex: nome, e-mail, empresa).
+Se precisar de mais informações, use formulários inteligentes (progressivos), que pedem dados adicionais em interações futuras.
+Utilize microcopy persuasiva perto do botão (“Quero testar agora”, “Começar meu trial gratuito”).
+Evite termos frios como “Enviar” ou “Cadastrar”.
+ESTRUTURA DE LANDING 
+PAGE QUE CONVERTE
+ATENÇÃO PARA O FORMULÁRIO DA PÁGINA:Estratégia:
+Pense nos campos como pontos de qualificação: o que esse dado vai te ajudar a entender ou acionar depois?
+Integre sempre o formulário a ferramenta de automação de marketing e CRM para ativar fluxos automáticos (ex: nutrição pós-conversão, etc).
+FRAMEWORKS DE COPY 
+(AIDA / PAS)
+AIDA
+Trabalha mais pela curiosidade e pela progressão natural até a ação. Ideal quando você quer orientar o leitor por um caminho de descoberta até a decisão.
+Atenção  ➔ Mostre a dor ou problema
+Interesse ➔ Prove que entende e tem a solução (como você resolve essa dor ou problema)
+Desejo ➔ Gere conexão com benefícios e resultados reais.
+Ação ➔ Leve a conversão com um CTA claro.
+FRAMEWORKS DE COPY 
+(AIDA / PAS)
+PAS
+Trabalha mais pela dor imediata do leitor e pela urgência de resolver. 
+Ideal quando o diferencial é demonstrar quão incômodo é o problema e quão decisiva é a solução.
+Problema ➔ Mostre que entende a dor (o desafio do cliente).
+Agitação ➔ Amplifique o desconforto / incômodo.
+Solução ➔ Mostre seus produtos / serviços como resposta.
+ESCREVENDO COPY 
+QUE CONVERTE
+Dicas práticas para escrever uma copy que vende:
+1. Fale de benefícios, não de funcionalidades
+❌ “Sistema de gestão médica completo”
+✅ “Reduza o tempo de atendimento e evite erros na rotina da clínica”
+Mostre o que o usuário ganha, não o que você faz.
+2. Conecte-se com a dor ou desejo do cliente
+Comece a LP falando do problema que ele quer resolver.
+Use frases que geram empatia e conexão
+ESCREVENDO COPY 
+QUE CONVERTE
+Dicas práticas para escrever uma copy que vende:
+3. Use linguagem simples e humana
+Evite jargões técnicos e frases longas.
+Escreva como se estivesse explicando para um amigo em 30 segundos.
+4. Use verbos de ação e CTA fortes
+“Comece agora” / “Teste grátis por 15 dias” / “Fale com um especialista” / “Baixe o guia exclusivo”
+Sempre com clareza sobre o que vai acontecer depois do clique.
+ESCREVENDO COPY 
+QUE CONVERTE
+Dicas práticas para escrever uma copy que vende:
+5. Quebre objeções ao longo da página Antecipe dúvidas do tipo:
+“Será que é difícil de usar?”
+“É caro?”
+“Funciona pra minha realidade?”
+Responda com provas sociais, depoimentos, garantias ou dados reais.
+ESCREVENDO COPY 
+QUE CONVERTE
+Dicas práticas para escrever uma copy que vende:
+6. Use números e fatos
+“+500 clínicas atendidas”
+“Economia média de 30% no tempo de agendamento”
+Números tornam o benefício concreto e tangível.
+7. Aplique “microcopy” estratégica São pequenos textos que fazem diferença na conversão:
+No botão: “Quero testar agora”
+No rodapé: “Não se preocupe, seus dados estão protegidos pela LGPD”
+No topo: “Vagas limitadas para o trial gratuito”.
+ESCREVENDO COPY 
+QUE CONVERTE
+Dicas práticas para escrever uma copy que vende:
+8. Teste diferentes versões de headlines A primeira seção decide se a pessoa vai rolar a página. Faça variações e teste:
+“Otimize a rotina da sua clínica em minutos”
+“Menos burocracia, mais pacientes satisfeitos.”
+9. Alinhe copy e design
+O texto deve guiar o olhar - cada bloco leva ao próximo CTA.
+Cada parágrafo deve ter um único objetivo (informar, convencer ou direcionar).
+ESCREVENDO COPY 
+QUE CONVERTE
+Aplicação prática - Clínica Tech (fundo funil):
+Objetivo: gerar testes gratuitos de 15 dias
+Headline: Transforme a gestão da sua clínica em 15 dias.
+Subtítulo: Teste grátis e veja como reduzir custos e aumentar eficiência.
+CTA: “Começar meu teste gratuito”.
+Prova Social: Médicos relatando ganhos reais em depoimentos curtos.
+Benefícios: +30% de eficiência, integração total, suporte humano.
+CTA final: “Quero testar agora - sem cartão de crédito.”
+UX E DESIGN ORIENTADO  
+À CONVERSÃO
+Dicas práticas visuais e de usabilidade:
+Layout em “F” (acompanha o olhar humano);
+Posicione o título e CTA principal, de preferência, no topo esquerdo (é onde o olhar começa); 
+No CTA, use uma cor de contraste para destacar;
+Teste versões mobile e desktop;
+Use subtítulos, bullets e ícones para guiar o olhar horizontal;
+Evite blocos grandes de texto, o usuário não lê linha por linha.
+A LP deve parecer simples, mesmo que tenha sido estrategicamente pensada.
+UX E DESIGN ORIENTADO  
+À CONVERSÃO
+Exemplos visuais:
+Algar - Soluções de Cibersegurança🔗 Acesar página 
+Ponto forte:Landing page institucional bem estruturada, com proposta de valor clara e foco em geração de leads qualificados B2B.
+
+UX E DESIGN ORIENTADO  
+À CONVERSÃO
+Exemplos visuais:
+Ahrefs - Start Trial (SEO Tool)🔗 Acessar página  Ponto forte: Comunicação direta e sem ruído, voltada à demonstração do valor da ferramenta.Destaques:→ Headline forte: “Tudo que você precisa para crescer no Google”.→ CTA sempre visível.→ Sessões de benefícios e depoimentos com design limpo e sem dispersão.
+Template de Estrutura de Landing Page→ Modelo baseado em frameworks de copywriting (AIDA / PAS / 5 Seções-Chave).→ Direcionamentos para cada tipo de LP (Topo, Meio e Fundo de Funil).→ Instruções de conteúdo, layout e CTA.
+Checklist de Boas Práticas de LP→ Pontos de atenção sobre copy, design, usabilidade e SEO.→ Orientações para formulários, CTAs e versões mobile. → Comparativo entre LPs informativas x LPs de conversão.
+ACESSAR TEMPLATES
+TEMPLATES DISPONÍVEIS
+ANÁLISE FINAL E DÚVIDAS
+REFLEXÃO 
+FINAL DA AULA
+Sua landing page é o ”vendedor que trabalha 24 horas”.Ela precisa falar com clareza, eliminar dúvidas e incentivar a ação.
+Pergunte a si mesmo:
+Sua LP comunica valor real ou apenas funcionalidade?
+Seu CTA é forte, visível e repetido?
+Você está medindo o que importa (taxa de conversão)?
+ENTREGÁVEIS E 
+PRÓXIMOS PASSOS
+Entregáveis:
+Landing Page finalizada e publicada
+Copy principal revisada e CTAs definidos
+Checklist de boas práticas aplicado
+Prazo: até a próxima aula. 
+ENTREGÁVEIS E 
+PRÓXIMOS PASSOS
+Na próxima aula vamos:
+Explorar os gatilhos de conversão e estruturar a jornada pós-lead, garantindo um relacionamento eficiente desde o primeiro contato.
+Mapear pontos de conversão (site, LPs, formulários);
+Definir a sequência inicial de relacionamento e onboarding de leads;
+Criar fluxos simples de automação para nutrir e engajar novos contatos.
+PERGUNTAS, 
+DÚVIDAS, 
+INSIGHTS?
+Espaço para perguntas, trocas entre startups, aprendizados em comum.
+
+“O que ficou mais claro pra você hoje?”
+
+“Crescer não é fazer mais. É fazer o certo.”
+
+Nos vemos na próxima aula!
+
+OBRIGADO!

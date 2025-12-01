@@ -1,0 +1,172 @@
+Entendendo quem compra, por que compra e como decide
+ JTBD CANVAS + PERSONA
+POR QUE ESSA
+AULA AGORA?
+Já sabemos onde estamos (diagnótico e Canvas), os desafios e oportunidades (SWOT) e quem queremos atingir (ICP).
+
+Agora vamos entender a cabeça do cliente:
+O que ele quer resolver (JTBD).
+Quem ele realmente é (Persona).
+QUAIS OS 
+OBJETIVOS 
+DA AULA
+O que vamos fazer:
+
+Entender o que realmente motiva o cliente a agir.
+Construir uma persona estratégica baseada em dores e comportamento.
+Mapear a jornada de compra para ajustar ações de conteúdo, vendas e retenção.
+Criar base para campanhas, anúncios, copy e storytelling.
+JTBD CANVAS(Jobs To Be Done)
+O que é o JTBD Canvas?
+É uma forma prática de entender por que alguém decide comprar algo.
+
+A proposta é simples:
+As pessoas não compram produtos ou serviços. Elas contratam soluções para fazer progresso (evoluir, resolver problema) em suas vidas.
+O JTBD Canvas é a ferramenta que ajuda sua startup a mapear esse progresso que o cliente busca.
+JTBD CANVAS
+Quais são os objetivos:
+Entender o que o cliente quer conquistar;
+Mapear o que trava a jornada de decisão;
+Identificar medos, frustrações e critérios reais de sucesso (jornada emocional e funcional);
+Produzir conteúdo e campanhas que tocam no problema certo.
+JTBD CANVAS
+Quais são os benefícios:
+Clareza sobre a motivação real de compra;
+Base para um pitch mais conectado com o cliente;
+Entendimento profundo sobre obstáculos e travas que impedem a conversão;
+Ajuda a criar conteúdos úteis, que geram autoridade e tração;
+Evita investir em funcionalidades ou mensagens que ninguém se importa.
+JTBD CANVAS
+Como funciona o canvas:Ele é composto por 5 blocos simples, mas estratégicos:
+1. Job principal:Qual é o problema prático que seu cliente quer resolver?
+Exemplo:
+Quero parar de perder tempo com papelada e desencontros na agenda da clínica.
+2. Situação atual:O que ele faz hoje? Como se sente? O que atrapalha essa tarefa?
+Exemplo:
+Usam planilhas no Excel e WhatsApp. Perdem pacientes por conflito de horários.
+JTBD CANVAS
+Exemplo:
+Sentem frustração e desorganização. A secretária vive estressada.
+Obstáculo: medo de implantar algo novo e a equipe não usar.
+3. Ganhos esperados:O que ele espera conquistar ao resolver isso? Como ele sabe que deu certo?
+Exemplo:
+Agenda fluindo com menos retrabalho. Mais organização.
+Sabe que deu certo quando ninguém reclama e a taxa de faltas diminui.
+JTBD CANVAS
+4. Frustrações e Medos:O que pode travar a decisão? Que experiências negativas ele já teve?	Exemplo:
+Já testaram outro sistema e abandonaram. Não teve suporte, era confuso.
+Medo de perder dados, medo da equipe rejeitar.
+
+5. Alternativas Reais:O que ele já tentou antes? Por que ainda usa isso mesmo sendo ruim?	Exemplo:
+Excel, papel, agenda de papel, sistema gratuito que limita funções.
+Continuam usando isso por hábito, conforto e medo de mudar.
+JTBD CANVAS
+Como coletar informações para o canvas?
+Faça entrevistas com clientes reais ou potenciais;
+Revise feedbacks de vendas, atendimento e suporte;
+Observe padrões em chats, e-mails, NPS, comentários;
+Use perguntas como:
+“O que te fez buscar uma solução como a nossa?”
+“O que estava te incomodando antes?”
+“Você tentou resolver isso de outra forma antes?”
+“O que te deixou inseguro na hora de contratar?”
+JTBD CANVAS
+Como usar na prática:
+Uma vez mapeado, começamos a transformar isso em copy “matadora”:
+A dor real vira headline.
+A objeção vira conteúdo educativo.
+Os benefícios ganham argumentos de autoridade, prova social.
+JTBD CANVAS
+Ferramenta: template JTBD Canvas
+Instruções:
+Preencha 1 JTBD por ICP.Pode se basear em entrevistas, observações, cliente reais.Preencher com frases reais, não genéricas.
+ACESSAR
+JTBD CANVAS
+PERSONAESTRATÉGICA
+PERSONA ESTRATÉGICA
+O que são personas?
+É a representação semifictícia do seu cliente real com contexto, dores, comportamentos, desejos e motivações de compra.
+Ela ajuda a:
+Criar comunicação mais eficaz
+Escolher canais e formatos com mais precisão
+Posicionar o produto com clareza
+Vender com mais empatia
+ICP: define o tipo de empresa ou público ideal.Persona: desce um nível e mostra quem é a pessoa que decide ou influencia a compra.
+Por que usar a persona estratégica 
+(e não genérica)?
+A maioria das personas tradicionais falha porque se limitam a algo muito genérico:
+“Maria, 34 anos, gerente de marketing, gosta de café, tem um cachorro.”
+O que sua startup precisa saber é:
+O que trava a decisão dela?
+O que faz ela confiar ou desconfiar de você?
+O que ela já tentou e deu errado?
+O que ela quer conquistar no papel dela?
+O que ela considera uma solução de sucesso?
+PERSONA ESTRATÉGICA
+Por que fazer?
+Sem persona clara, você:
+Fala com todo mundo e não conecta com ninguém
+Escolhe canais errados
+Cria conteúdo raso e genérico
+
+Com uma persona estratégica, você:
+Atrai as pessoas certas
+Aumenta conversão e engajamento
+Reduz objeções e ruídos de comunicação
+PERSONA ESTRATÉGICA
+Blocos da persona:
+O template completo é dividido em 7 grandes blocos:
+Identificação (Nome, profissão, idade, etc.)
+Rotina e contexto atual (O que ela faz no dia a dia; Ferramentas que utiliza; Nível de autonomia; etc.)
+ Dores e frustrações (Dores práticas; Dores emocionais; Medos e objeções)
+ Objetivos e desejos (Objetivos racionais; Objetivos emocionais; Metas claras)
+ Tom e linguagem ideal (Como prefere se comunicar; Tom ideal; Linguagem a evitar)
+ Comportamento Digital (Onde busca ajuda; Como consome conteúdo; Como toma decisões)
+ Frases típicas e percepções (O que essa pessoa tem costume de dizer em sua rotina)
+PERSONA ESTRATÉGICA
+Como coletar dados para construir a persona?
+
+Entrevistas com clientes reais (rápidas, sem roteiro rígido)
+Feedbacks de vendas e atendimento
+Análise de chats, comentários, e-mails, reviews
+Rodadas rápidas de perguntas como:
+O que te fez buscar uma solução como essa?
+Qual foi seu maior receio antes de contratar?
+O que te convenceu de que era a escolha certa?
+PERSONA ESTRATÉGICA
+Como usar na prática:
+Use o vocabulário dela nas campanhas.
+Crie conteúdos que resolvam dúvidas e medos reais.
+No SDR, mostre que você entende o contexto dela.
+No onboarding, atenda logo a primeira expectativa dela.
+PERSONA ESTRATÉGICA
+PERSONA ESTRATÉGICA
+Ferramenta: template Persona Estratégica
+
+Dicas:
+Evite criar com base em achismos ou só com feeling.
+Não foque em características irrelevantes (ex: signo, café favorito)
+Crie somente as personas que você usará
+ACESSAR
+PRÓXIMOS PASSOS E DÚVIDAS
+PRÓXIMOS PASSOS
+Entregáveis:
+
+JTBD Canvas preenchido.
+Persona estruturada.
+Prazo: até a próxima aula.
+
+Na próxima aula vamos:
+Construir a Jornada do Cliente.
+E a PUV (Proposta Única de Valor);
+PERGUNTAS, 
+DÚVIDAS, 
+INSIGHTS?
+Espaço para perguntas, trocas entre startups, aprendizados em comum.
+
+“O que ficou mais claro pra você hoje?”
+“Crescer não é fazer mais. É fazer o certo.”
+
+Nos vemos na próxima aula!
+
+OBRIGADO!
