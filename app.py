@@ -1,5 +1,8 @@
+# app.py
 import streamlit as st
+
 from agent_core import Tr4ctionAgent
+from prompts_q1 import LABEL_TO_STEP_KEY, STEP_CONFIG, STEP_ORDER
 from utils.data_manager import register_answer
 
 
@@ -9,7 +12,7 @@ from utils.data_manager import register_answer
 st.set_page_config(
     page_title="TR4CTION Agent",
     layout="wide",
-    page_icon="🚀"
+    page_icon="🚀",
 )
 
 st.title("🚀 Agente TR4CTION – Q1")
@@ -21,24 +24,24 @@ st.markdown("### Assistente oficial da trilha de Marketing da FCJ Venture Builde
 # ============================================
 st.sidebar.header("Identificação do Founder")
 
-startup_name = st.sidebar.text_input("Nome da Startup", placeholder="Ex: Trolesi Joias")
+startup_name = st.sidebar.text_input(
+    "Nome da Startup", placeholder="Ex: Trolesi Joias"
+)
 founder_name = st.sidebar.text_input("Seu nome", placeholder="Ex: Lucas Peixoto")
 
 
-# Função para criar ID único
-def generate_founder_id(startup, founder):
+def generate_founder_id(startup: str, founder: str) -> str:
+    """Gera um ID simples e legível para o founder."""
     base = f"{startup}_{founder}".lower().replace(" ", "_")
     return base[:60]
 
 
-# Validação
 if not (startup_name and founder_name):
     st.sidebar.warning("Preencha os dados acima para iniciar o atendimento.")
     st.stop()
 
 founder_id = generate_founder_id(startup_name, founder_name)
 st.sidebar.success(f"ID gerado automaticamente: `{founder_id}`")
-
 
 # Reset de sessão ao trocar founder
 if "session_owner" not in st.session_state:
@@ -52,25 +55,19 @@ if st.session_state.session_owner != founder_id:
 # ============================================
 # ETAPAS DO Q1
 # ============================================
-STEP_KEYS = {
-    "Diagnóstico + CSD Canvas": "diagnostico",
-    "ICP + SWOT": "icp_swot",
-    "Persona + JTBD": "persona_jtbd",
-}
+# Usa a ordem definida em STEP_ORDER
+step_labels = [STEP_CONFIG[key]["label"] for key in STEP_ORDER]
 
-etapa = st.selectbox("Escolha a etapa:", list(STEP_KEYS.keys()))
-step_key = STEP_KEYS[etapa]
+etapa_label = st.selectbox("Escolha a etapa:", step_labels)
+step_key = LABEL_TO_STEP_KEY[etapa_label]
 
-st.write(f"## 📌 Etapa atual: **{etapa}**")
+st.write(f"## 📌 Etapa atual: **{etapa_label}**")
 
 
 # ============================================
 # PIPELINE PREMIUM ANIMADO
 # ============================================
-# -----------------------------
-# PIPELINE PREMIUM ANIMADO
-# -----------------------------
-def render_pipeline_animated(current_step):
+def render_pipeline_animated(current_step: str):
     steps = {
         "diagnostico": "Diagnóstico",
         "icp_swot": "ICP + SWOT",
@@ -140,7 +137,7 @@ def render_pipeline_animated(current_step):
       <div class="pipeline">
     """
 
-    for i, step_key in enumerate(step_keys_order):
+    for i, s_key in enumerate(step_keys_order):
         if i < current_index:
             status_class = "done"
         elif i == current_index:
@@ -151,7 +148,7 @@ def render_pipeline_animated(current_step):
         html += f"""
         <div class="step-block {status_class}">
           <div class="step-circle"></div>
-          <div class="step-label">{steps[step_key]}</div>
+          <div class="step-label">{steps[s_key]}</div>
         </div>
         """
 
@@ -165,6 +162,8 @@ def render_pipeline_animated(current_step):
     st.markdown(html, unsafe_allow_html=True)
 
 
+render_pipeline_animated(step_key)
+
 
 # ============================================
 # AGENTE
@@ -174,16 +173,18 @@ agent = Tr4ctionAgent(startup_name)
 if "history" not in st.session_state:
     st.session_state.history = []
 
+MAX_HISTORY = 20  # limite para não explodir a sessão
+
 
 # ============================================
-# CAIXA DE TEXTO DO FUNDER
+# CAIXA DE TEXTO DO FOUNDER
 # ============================================
 st.markdown("### 💬 Conversa com o Agente TR4CTION")
 
 user_input = st.text_area(
     "Digite sua mensagem:",
     placeholder="Ex: Minha startup vende X e resolve Y...",
-    height=120
+    height=120,
 )
 
 btn = st.button("Enviar 🚀")
@@ -198,26 +199,32 @@ if btn:
     else:
         st.session_state.history.append({"role": "user", "content": user_input})
 
+        # Limita histórico
+        if len(st.session_state.history) > MAX_HISTORY:
+            st.session_state.history = st.session_state.history[-MAX_HISTORY:]
+
         try:
             response = agent.ask(
                 step_key=step_key,
                 history=st.session_state.history,
                 user_input=user_input,
-                model="gpt-4.1-mini"
+                model="gpt-4.1-mini",
             )
 
-            st.session_state.history.append({"role": "assistant", "content": response})
+            st.session_state.history.append(
+                {"role": "assistant", "content": response}
+            )
 
             register_answer(
                 founder_id=founder_id,
                 startup=startup_name,
                 founder_name=founder_name,
                 step=step_key,
-                answer_text=response
+                answer_text=response,
             )
 
         except Exception as e:
-            st.error("Erro ao consultar o agente. Veja o log.")
+            st.error("Erro ao consultar o agente. Verifique logs e configuração.")
             st.exception(e)
 
 
@@ -234,7 +241,7 @@ for msg in st.session_state.history:
             <strong>👤 Você:</strong><br>{msg['content']}
             </div>
             """,
-            unsafe_allow_html=True
+            unsafe_allow_html=True,
         )
     else:
         st.markdown(
@@ -243,7 +250,7 @@ for msg in st.session_state.history:
             <strong>🤖 Agente:</strong><br>{msg['content']}
             </div>
             """,
-            unsafe_allow_html=True
+            unsafe_allow_html=True,
         )
 
 

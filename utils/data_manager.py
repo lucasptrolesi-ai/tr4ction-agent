@@ -1,20 +1,34 @@
+# utils/data_manager.py
 """
-Camada simples de persistência dos dados de resposta.
+Persistência simples das respostas do TR4CTION Agent.
 
-Hoje grava em arquivo JSONL local (um JSON por linha) apenas para protótipo.
-Em produção, a ideia é trocar por um banco (Postgres, BigQuery, etc.).
+- Salva respostas em data/answers.json
+- Permite carregar para o dashboard
 """
 
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Dict, List
+
+DATA_DIR = Path("data")
+ANSWERS_PATH = DATA_DIR / "answers.json"
 
 
-BASE_PATH = Path("data")
-BASE_PATH.mkdir(exist_ok=True)
+def load_answers() -> List[Dict]:
+    """Carrega todas as respostas já registradas."""
+    if not ANSWERS_PATH.exists():
+        return []
 
-ANSWER_FILE = BASE_PATH / "answers.jsonl"
+    try:
+        with ANSWERS_PATH.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, list):
+            return data
+        return []
+    except json.JSONDecodeError:
+        # Em caso de arquivo corrompido
+        return []
 
 
 def register_answer(
@@ -24,42 +38,21 @@ def register_answer(
     step: str,
     answer_text: str,
 ) -> None:
-    """
-    Registra uma resposta do agente em formato de linha JSON.
+    """Registra uma nova resposta no arquivo answers.json."""
+    DATA_DIR.mkdir(exist_ok=True, parents=True)
 
-    Esse formato é ótimo para:
-    - Ler em lote depois (pandas lê JSONL fácil)
-    - Fazer análises de progresso dos founders
-    """
-    record: Dict[str, Any] = {
-        "timestamp": datetime.utcnow().isoformat(),
-        "founder_id": founder_id,
-        "startup": startup,
-        "founder_name": founder_name,
-        "step": step,
-        "answer": answer_text,
-    }
+    answers = load_answers()
 
-    with ANSWER_FILE.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    answers.append(
+        {
+            "timestamp": datetime.now().isoformat(timespec="seconds"),
+            "founder_id": founder_id,
+            "startup": startup,
+            "founder_name": founder_name,
+            "step": step,
+            "answer": answer_text,
+        }
+    )
 
-
-def load_answers() -> List[Dict[str, Any]]:
-    """
-    Carrega todas as respostas já registradas.
-    """
-    if not ANSWER_FILE.exists():
-        return []
-
-    rows: List[Dict[str, Any]] = []
-    with ANSWER_FILE.open("r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                rows.append(json.loads(line))
-            except json.JSONDecodeError:
-                # Em caso de linha corrompida, apenas ignora.
-                continue
-    return rows
+    with ANSWERS_PATH.open("w", encoding="utf-8") as f:
+        json.dump(answers, f, ensure_ascii=False, indent=2)

@@ -1,3 +1,4 @@
+# dashboard.py
 """
 Dashboard de acompanhamento do TR4CTION Agent.
 
@@ -7,11 +8,12 @@ Dashboard de acompanhamento do TR4CTION Agent.
 
 from collections import defaultdict
 from typing import Dict, List
+import csv
+import io
 
 import streamlit as st
 
 from utils.data_manager import load_answers
-
 
 st.set_page_config(
     page_title="TR4CTION – Dashboard",
@@ -47,7 +49,27 @@ for row in answers:
 
 st.markdown(f"### Resultados filtrados: {len(filtered)} registros")
 
+# ---------------------------
+# Download em CSV
+# ---------------------------
+if filtered:
+    output = io.StringIO()
+    fieldnames = ["timestamp", "founder_id", "startup", "founder_name", "step", "answer"]
+    writer = csv.DictWriter(output, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(filtered)
+    csv_bytes = output.getvalue().encode("utf-8")
+
+    st.download_button(
+        "⬇ Baixar respostas em CSV",
+        data=csv_bytes,
+        file_name="respostas_tr4ction.csv",
+        mime="text/csv",
+    )
+
+# ---------------------------
 # Agrupar por founder + step
+# ---------------------------
 grouped: Dict[str, List[Dict]] = defaultdict(list)
 for row in filtered:
     key = f"{row['founder_name']} – {row['startup']} ({row['founder_id']})"

@@ -1,48 +1,91 @@
 # retriever.py
+"""
+Módulo de recuperação semântica (RAG) para o TR4CTION Agent.
+
+- Carrega embeddings já gerados em disco
+- Usa SentenceTransformer para gerar embeddings da pergunta
+- Faz busca por similaridade (cosseno)
+"""
+
 import pickle
+from functools import lru_cache
+from pathlib import Path
+from typing import List, Tuple
+
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-
-# -----------------------------------------
-# LOAD MODEL (apenas 1 vez)
-# -----------------------------------------
-model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 
-# -----------------------------------------
-# LOAD INDEX + TEXTS
-# -----------------------------------------
-def load_embeddings(index_path="embeddings/full_index.pkl",
-                    texts_path="embeddings/full_texts.pkl"):
-    with open(index_path, "rb") as f:
+@lru_cache()
+def _load_model() -> SentenceTransformer:
+    """Carrega o modelo de embeddings apenas uma vez (cache em memória)."""
+    return SentenceTransformer(_MODEL_NAME)
+
+
+def load_embeddings(
+    index_path: str = "embeddings/full_index.pkl",
+    texts_path: str = "embeddings/full_texts.pkl",
+) -> Tuple[np.ndarray, List[str]]:
+    """
+    Carrega o índice de embeddings e os textos originais.
+
+    Levanta FileNotFoundError se os arquivos não existirem.
+    """
+    index_p = Path(index_path)
+    texts_p = Path(texts_path)
+
+    if not index_p.exists() or not texts_p.exists():
+        raise FileNotFoundError(
+            "Arquivos de embeddings não encontrados.\n\n"
+            "Rode o comando abaixo ANTES de usar o agente:\n"
+            "    python embeddings_builder_local.py\n"
+        )
+
+    with index_p.open("rb") as f:
         index = pickle.load(f)
-    with open(texts_path, "rb") as f:
+
+    with texts_p.open("rb") as f:
         texts = pickle.load(f)
+
     return index, texts
 
 
-EMBEDDING_INDEX, STORED_TEXTS = load_embeddings()
+@lru_cache()
+def get_embeddings() -> Tuple[np.ndarray, List[str]]:
+    """Wrapper com cache para não recarregar arquivos toda hora."""
+    return load_embeddings()
 
 
-# -----------------------------------------
-# BUSCA SEMÂNTICA
-# -----------------------------------------
-def search_memory(query: str, top_k: int = 5):
+def search_memory(query: str, top_k: int = 5) -> List[str]:
     """
     Retorna os textos mais semelhantes à pergunta do usuário.
+
+    - Usa similaridade de cosseno
+    - top_k controla quantos trechos retornam
     """
-    # Converte pergunta em embedding
-    q_emb = model.encode([query])[0]
+    query = query.strip()
+    if not query:
+        return []
 
-    # Calcula similaridade por dot-product
-    scores = np.dot(EMBEDDING_INDEX, q_emb)
+    model = _load_model()
+    index, texts = get_embeddings()
 
-    # Pega melhores trechos
+    # Embedding da pergunta
+    q_emb = model.encode([query], convert_to_numpy=True)[0]
+
+    # Similaridade de cosseno
+    index_norms = np.linalg.norm(index, axis=1)
+    q_norm = np.linalg.norm(q_emb)
+
+    denom = index_norms * q_norm
+    denom[denom == 0] = 1e-9  # evita divisão por zero
+
+    scores = np.dot(index, q_emb) / denom
+
+    # Top-K
+    top_k = min(top_k, len(scores))
     top_idx = np.argsort(scores)[::-1][:top_k]
 
-    results = []
-    for idx in top_idx:
-        results.append(STORED_TEXTS[idx])
-
-    return results
+    return [texts[i] for i in top_idx]

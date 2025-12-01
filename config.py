@@ -1,3 +1,4 @@
+# config.py
 """
 Configurações centrais do projeto TR4CTION Agent.
 
@@ -7,6 +8,7 @@ Configurações centrais do projeto TR4CTION Agent.
 """
 
 import os
+
 from dotenv import load_dotenv
 
 # Carrega variáveis do arquivo .env, se existir
