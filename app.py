@@ -257,31 +257,31 @@ with col_right:
     # INPUT
     user_input = st.text_input("", placeholder="Digite sua pergunta ou resposta aqui...")
 
-    if (
-        st.button("Enviar mensagem")
-        or (st.session_state.get("last_input") == user_input and user_input.strip() != "")
-    ):
-        if user_input.strip():
-            st.session_state.history.append({"role": "user", "content": user_input})
+    if st.button("Enviar mensagem"):
+    if user_input.strip():
+        st.session_state.history.append({"role": "user", "content": user_input})
 
-            response = agent.ask(
-                step_key=step_key,
-                history=st.session_state.history,
-                user_input=user_input,
-            )
+        response = agent.ask(
+            step_key=step_key,
+            history=st.session_state.history,
+            user_input=user_input,
+        )
 
-            st.session_state.history.append({"role": "assistant", "content": response})
+        st.session_state.history.append(
+            {"role": "assistant", "content": response}
+        )
 
-            register_answer(
-                founder_id=founder_id,
-                startup=startup_name,
-                founder_name=founder_name,
-                step=step_key,
-                answer_text=response,
-            )
+        register_answer(
+            founder_id=founder_id,
+            startup=startup_name,
+            founder_name=founder_name,
+            step=step_key,
+            answer_text=response,
+        )
 
-            st.session_state.last_input = ""
-            st.experimental_rerun()
+        st.rerun()  # 🔧 CORRIGIDO
+
+
 
 st.markdown("<div class='fcj-footer'>FCJ Venture Builder • TR4CTION Agent</div>", unsafe_allow_html=True)
 st.markdown("</div>", unsafe_allow_html=True)
