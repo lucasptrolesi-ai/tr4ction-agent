@@ -4,7 +4,7 @@ from prompts_q1 import LABEL_TO_STEP_KEY, STEP_CONFIG, STEP_ORDER
 from utils.data_manager import register_answer
 
 # =============================================
-# CONFIG DO APP – FCJ TECH LIGHT PREMIUM
+# CONFIG DO APP – FCJ UI
 # =============================================
 st.set_page_config(
     page_title="TR4CTION Agent – FCJ Venture Builder",
@@ -23,6 +23,7 @@ html, body, [class*="css"]  {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
+/* Paleta baseada na FCJ */
 :root {
     --fcj-primary: #1BA6B2;
     --fcj-secondary: #64C7D0;
@@ -34,167 +35,109 @@ html, body, [class*="css"]  {
     --text-gray: #4B5563;
 }
 
-/* Fundo global */
 [data-testid="stAppViewContainer"] {
     background-color: var(--bg-page) !important;
 }
 
-/* ====================================
+/* =========================================
    HEADER
-   ==================================== */
+   ========================================= */
 .fcj-header-bar {
-    background: linear-gradient(90deg, #ffffff 0%, #ecfbfd 50%, #ffffff 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #f0fbfd 40%, #ffffff 100%);
     border-radius: 18px;
     border: 1px solid var(--border-soft);
-    padding: 18px 26px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    padding: 16px 22px;
+    margin-bottom: 14px;
 }
 
 .fcj-header-badge {
-    background-color: #dff7fa;
+    background-color: #e0f7fb;
     color: var(--fcj-deep);
     font-size: 0.75rem;
-    padding: 4px 12px;
+    padding: 4px 10px;
     border-radius: 999px;
-    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.08em;
+    font-weight: 600;
 }
 
 .fcj-header-title {
-    font-size: 1.85rem;
+    font-size: 1.7rem;
     font-weight: 700;
     color: var(--text-dark);
 }
 
 .fcj-header-sub {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-gray);
-    margin-top: -6px;
 }
 
-/* ====================================
-   GRID PRINCIPAL
-   ==================================== */
-.fcj-page {
-    padding: 20px 38px 30px 38px;
-}
-
-.fcj-main-grid {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-/* ====================================
-   CARD LATERAL
-   ==================================== */
+/* =========================================
+   PAINEL LATERAL
+   ========================================= */
 .fcj-panel {
-    background: var(--bg-card);
+    background-color: var(--bg-card);
     border-radius: 16px;
     border: 1px solid var(--border-soft);
-    padding: 18px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    padding: 16px;
 }
 
-.fcj-panel-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.fcj-panel-sub {
-    font-size: 0.85rem;
-    color: var(--text-gray);
-    margin-bottom: 12px;
-}
-
-/* ====================================
+/* =========================================
    CHAT
-   ==================================== */
-
+   ========================================= */
 .fcj-chat-card {
-    background: var(--bg-card);
+    background-color: var(--bg-card);
     border-radius: 16px;
     border: 1px solid var(--border-soft);
-    padding: 20px;
-    min-height: 240px;
-    max-height: 560px;
+    padding: 14px 16px;
+    min-height: 320px;
+    max-height: 520px;
     overflow-y: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    display: flex;
-    flex-direction: column;
 }
 
-.fcj-chat-empty {
-    color: #9ca3af;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 40px;
-}
-
+/* Balões */
 .msg-user {
     background: var(--fcj-primary);
-    padding: 12px 15px;
-    color: white !important;
-    border-radius: 14px;
+    padding: 10px 14px;
+    color: #ffffff !important;
+    border-radius: 16px;
     max-width: 70%;
     margin-left: auto;
-    margin-bottom: 12px;
-    box-shadow: 0 6px 14px rgba(27,166,178,0.25);
-    font-size: 0.94rem;
+    margin-bottom: 10px;
+    box-shadow: 0 6px 10px rgba(27,166,178,0.22);
 }
 
 .msg-agent {
-    background: #e8f7f9;
-    padding: 12px 15px;
-    border: 1px solid #b5e4e9;
-    color: var(--text-dark) !important;
-    border-radius: 14px;
-    max-width: 80%;
-    margin-bottom: 12px;
-    font-size: 0.94rem;
+    background: #f0fbfd;
+    border: 1px solid #d1f0f4;
+    padding: 10px 14px;
+    color: var(--text-dark);
+    border-radius: 16px;
+    max-width: 75%;
+    margin-bottom: 10px;
 }
 
-/* ====================================
-   INPUTS E BOTÕES
-   ==================================== */
+/* Placeholder Elegante */
+.fcj-chat-empty {
+    text-align:center;
+    padding:60px 20px;
+    color:#6b7280;
+}
 
+/* Inputs */
 textarea, input {
-    background: white !important;
-    color: var(--text-dark) !important;
-    border: 1px solid #d0d7de !important;
     border-radius: 10px !important;
-}
-
-.stTextArea textarea {
-    min-height: 90px !important;
+    border: 1px solid #d1d5db !important;
 }
 
 .stButton > button {
-    background: var(--fcj-primary) !important;
-    color: white !important;
-    border-radius: 999px !important;
-    padding: 8px 24px !important;
-    border: none;
-    box-shadow: 0 6px 14px rgba(27,166,178,0.25);
-    font-weight: 600;
-}
-
-.stButton > button:hover {
     background: var(--fcj-deep) !important;
-}
-
-/* Rodapé */
-.fcj-footer {
-    margin-top: 20px;
-    font-size: 0.78rem;
-    color: #9ca3af;
-    text-align: right;
+    color: white !important;
+    padding: 8px 22px !important;
+    border-radius: 999px !important;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
 
 </style>
@@ -203,14 +146,14 @@ textarea, input {
 )
 
 # =============================================
-# ENTER PARA ENVIAR (JavaScript)
+# JAVASCRIPT — ENTER PARA ENVIAR
 # =============================================
 st.markdown("""
 <script>
 document.addEventListener("keydown", function(e) {
     if (e.key === "Enter" && !e.shiftKey) {
         const sendButton = window.parent.document.querySelector('button[kind="primary"]');
-        if (sendButton) { sendButton.click(); }
+        if (sendButton) sendButton.click();
         e.preventDefault();
     }
 });
@@ -223,11 +166,11 @@ document.addEventListener("keydown", function(e) {
 with st.sidebar:
     st.markdown(
         """
-        <div style="margin-bottom:16px;">
-          <div style="font-size:0.85rem;text-transform:uppercase;color:#6b7280;">
+        <div style="margin-bottom:18px;">
+          <div style="font-size:0.85rem; text-transform:uppercase; color:#6b7280;">
             FCJ Venture Builder
           </div>
-          <div style="font-size:1.18rem;font-weight:700;color:#111827;">
+          <div style="font-size:1.1rem; font-weight:700; color:#111827;">
             TR4CTION Agent
           </div>
         </div>
@@ -244,31 +187,27 @@ with st.sidebar:
     founder_id = None
     if startup_name and founder_name:
         founder_id = generate_id(startup_name, founder_name)
-        st.caption("ID gerado automaticamente:")
+        st.caption("ID automático:")
         st.success(founder_id)
 
-        if st.button("🧹 Limpar conversa"):
+        if st.button(" Limpar conversa"):
             st.session_state.history = []
-            st.session_state.user_input = ""
             st.rerun()
 
     st.markdown("---")
-    st.markdown(
-        "<small style='color:#6b7280;'>Powered by FCJ Venture Builder • TR4CTION Q1</small>",
-        unsafe_allow_html=True,
-    )
+    st.markdown("<small style='color:#6b7280;'>Powered by FCJ • TR4CTION Q1</small>", unsafe_allow_html=True)
 
-# Se não identificado
+# =============================================
+# BLOQUEAR TELA ATÉ IDENTIFICAÇÃO
+# =============================================
 if not (startup_name and founder_name and founder_id):
     st.markdown(
         """
-        <div class="fcj-page">
-            <div class="fcj-header-bar">
-                <div>
-                    <div class="fcj-header-badge">Agente de IA • TR4CTION</div>
-                    <div class="fcj-header-title">TR4CTION Agent – FCJ Venture Builder</div>
-                    <div class="fcj-header-sub">Preencha Startup e Founder na lateral para iniciar.</div>
-                </div>
+        <div class="fcj-header-bar">
+            <div class="fcj-header-badge">Agente de IA • Q1</div>
+            <div class="fcj-header-title">TR4CTION Agent – FCJ Venture Builder</div>
+            <div class="fcj-header-sub">
+                Preencha <strong>Startup</strong> e <strong>Founder</strong> na lateral esquerda para iniciar.
             </div>
         </div>
         """,
@@ -277,37 +216,27 @@ if not (startup_name and founder_name and founder_id):
     st.stop()
 
 # =============================================
-# HEADER PRINCIPAL
+# LAYOUT PRINCIPAL
 # =============================================
+st.markdown('<div class="fcj-header-bar">', unsafe_allow_html=True)
+st.markdown('<div class="fcj-header-badge">Agente de IA • TR4CTION</div>', unsafe_allow_html=True)
+st.markdown('<div class="fcj-header-title">TR4CTION Agent – FCJ Venture Builder</div>', unsafe_allow_html=True)
 st.markdown(
-    """
-<div class="fcj-page">
-
-  <div class="fcj-header-bar">
-    <div>
-      <div class="fcj-header-badge">Agente de IA • TR4CTION</div>
-      <div class="fcj-header-title">TR4CTION Agent – FCJ Venture Builder</div>
-      <div class="fcj-header-sub">
-        Assistente estratégico para Diagnóstico, ICP, SWOT e Persona usando o material oficial do TR4CTION.
-      </div>
-    </div>
-  </div>
-
-  <div class="fcj-main-grid">
-""",
+    '<div class="fcj-header-sub">Diagnóstico, ICP, SWOT e Persona com base oficial do TR4CTION.</div>',
     unsafe_allow_html=True,
 )
+st.markdown("</div>", unsafe_allow_html=True)
 
-# =============================================
-# COLUNA ESQUERDA – ETAPA
-# =============================================
 col_left, col_right = st.columns([0.95, 2.05])
 
+# =============================================
+# COLUNA ESQUERDA — ETAPA
+# =============================================
 with col_left:
     st.markdown('<div class="fcj-panel">', unsafe_allow_html=True)
 
-    st.markdown('<div class="fcj-panel-title">Etapa do Q1</div>', unsafe_allow_html=True)
-    st.markdown('<div class="fcj-panel-sub">Selecione qual bloco você está trabalhando.</div>', unsafe_allow_html=True)
+    st.markdown("<div class='fcj-panel-title'>Etapa do Q1</div>", unsafe_allow_html=True)
+    st.markdown("<div class='fcj-panel-sub'>Selecione o bloco atual da trilha TR4CTION.</div>", unsafe_allow_html=True)
 
     step_labels = [STEP_CONFIG[k]["label"] for k in STEP_ORDER]
     stage_label = st.selectbox("", step_labels, label_visibility="collapsed")
@@ -315,7 +244,7 @@ with col_left:
 
     st.markdown(
         f"""
-        <div style="margin-top:14px;font-size:0.86rem;color:#6b7280;">
+        <div style="margin-top:10px;font-size:0.85rem;color:#4B5563;">
             <strong>Startup:</strong> {startup_name}<br>
             <strong>Founder:</strong> {founder_name}<br>
             <strong>Etapa atual:</strong> {stage_label}
@@ -323,52 +252,56 @@ with col_left:
         """,
         unsafe_allow_html=True,
     )
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 # =============================================
-# COLUNA DIREITA – CHAT
+# COLUNA DIREITA — CHAT
 # =============================================
 if "history" not in st.session_state:
     st.session_state.history = []
 
-if "user_input" not in st.session_state:
-    st.session_state.user_input = ""
-
 agent = Tr4ctionAgent(startup_name)
 
 with col_right:
+
     st.markdown('<div class="fcj-chat-card">', unsafe_allow_html=True)
 
-    st.markdown('<div class="fcj-chat-title">Conversa com o TR4CTION Agent</div>', unsafe_allow_html=True)
-    st.markdown('<div class="fcj-chat-sub">Aprofunde a etapa conversando com o agente.</div>', unsafe_allow_html=True)
-
-    # placeholder se vazio
     if len(st.session_state.history) == 0:
-        st.markdown("<div class='fcj-chat-empty'>Nenhuma mensagem ainda. Inicie a conversa! 💬</div>", unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div class="fcj-chat-empty">
+                <img src="https://fcjventurebuilder.com/wp-content/uploads/2023/05/logo-fcj-2023-azul.png"
+                     style="width:160px; opacity:0.9; margin-bottom:20px;" />
+                <div style="font-size:1rem; color:#0F5C63; margin-bottom:6px;">
+                    Seu assistente TR4CTION está pronto.
+                </div>
+                <div style="font-size:0.9rem;">
+                    Envie uma mensagem para iniciar o atendimento 💬
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        for msg in st.session_state.history:
+            if msg["role"] == "user":
+                st.markdown(f"<div class='msg-user'>{msg['content']}</div>", unsafe_allow_html=True)
+            else:
+                st.markdown(f"<div class='msg-agent'>{msg['content']}</div>", unsafe_allow_html=True)
 
-    # histórico
-    for msg in st.session_state.history:
-        if msg["role"] == "user":
-            st.markdown(f"<div class='msg-user'>{msg['content']}</div>", unsafe_allow_html=True)
-        else:
-            st.markdown(f"<div class='msg-agent'>{msg['content']}</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    # caixa de texto
-    user_input = st.text_area(
-        "",
-        placeholder="Digite sua pergunta, contexto ou resposta aqui...",
-        key="user_input"
-    )
+    # Entrada de texto
+    st.markdown("<p style='margin-top:10px;font-weight:500;'> Enviar nova mensagem</p>", unsafe_allow_html=True)
+
+    user_input = st.text_area("", placeholder="Digite sua pergunta, contexto ou resposta aqui...", key="user_input")
 
     if st.button("Enviar mensagem"):
-        if st.session_state.user_input.strip():
-            st.session_state.history.append({"role": "user", "content": st.session_state.user_input})
+        if user_input.strip():
 
-            response = agent.ask(
-                step_key=step_key,
-                history=st.session_state.history,
-                user_input=st.session_state.user_input
-            )
+            st.session_state.history.append({"role": "user", "content": user_input})
+            response = agent.ask(step_key=step_key, history=st.session_state.history, user_input=user_input)
 
             st.session_state.history.append({"role": "assistant", "content": response})
 
@@ -377,24 +310,20 @@ with col_right:
                 startup=startup_name,
                 founder_name=founder_name,
                 step=step_key,
-                answer_text=response
+                answer_text=response,
             )
 
-            st.session_state.user_input = ""  # limpa o campo
+            st.session_state.user_input = ""
             st.rerun()
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
 # =============================================
-# FOOTER
+# RODAPÉ
 # =============================================
 st.markdown(
     """
-    </div> <!-- grid -->
-    <div class="fcj-footer">
-        FCJ Venture Builder • TR4CTION Agent – protótipo acadêmico para apoio consultivo-operacional.
+    <div style="margin-top:15px; text-align:right; color:#9CA3AF; font-size:0.8rem;">
+        FCJ Venture Builder • TR4CTION Agent – protótipo acadêmico consultivo-operacional.
     </div>
-</div> <!-- page -->
-""",
+    """,
     unsafe_allow_html=True,
 )
