@@ -4,7 +4,7 @@ from prompts_q1 import LABEL_TO_STEP_KEY, STEP_CONFIG, STEP_ORDER
 from utils.data_manager import register_answer
 
 # =============================================
-# CONFIG DO APP – FCJ TECH LIGHT FULL UI
+# CONFIG DO APP – FCJ TECH LIGHT PREMIUM
 # =============================================
 st.set_page_config(
     page_title="TR4CTION Agent – FCJ Venture Builder",
@@ -23,7 +23,6 @@ html, body, [class*="css"]  {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
-/* Paleta baseada na marca FCJ */
 :root {
     --fcj-primary: #1BA6B2;
     --fcj-secondary: #64C7D0;
@@ -40,14 +39,14 @@ html, body, [class*="css"]  {
     background-color: var(--bg-page) !important;
 }
 
-/* ===============================
+/* ====================================
    HEADER
-   =============================== */
+   ==================================== */
 .fcj-header-bar {
     background: linear-gradient(90deg, #ffffff 0%, #ecfbfd 50%, #ffffff 100%);
     border-radius: 18px;
     border: 1px solid var(--border-soft);
-    padding: 18px 26px 18px 26px;
+    padding: 18px 26px;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -77,9 +76,9 @@ html, body, [class*="css"]  {
     margin-top: -6px;
 }
 
-/* ===============================
-   ESTRUTURA GERAL
-   =============================== */
+/* ====================================
+   GRID PRINCIPAL
+   ==================================== */
 .fcj-page {
     padding: 20px 38px 30px 38px;
 }
@@ -91,19 +90,19 @@ html, body, [class*="css"]  {
     margin-top: 20px;
 }
 
-/* ===============================
-   CARD LATERAL (ETAPA)
-   =============================== */
+/* ====================================
+   CARD LATERAL
+   ==================================== */
 .fcj-panel {
     background: var(--bg-card);
     border-radius: 16px;
     border: 1px solid var(--border-soft);
-    padding: 18px 18px 20px 18px;
+    padding: 18px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.04);
 }
 
 .fcj-panel-title {
-    font-size: 1.08rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-dark);
 }
@@ -114,31 +113,30 @@ html, body, [class*="css"]  {
     margin-bottom: 12px;
 }
 
-/* ===============================
+/* ====================================
    CHAT
-   =============================== */
+   ==================================== */
+
 .fcj-chat-card {
     background: var(--bg-card);
     border-radius: 16px;
     border: 1px solid var(--border-soft);
     padding: 20px;
-    min-height: 450px;
+    min-height: 240px;
+    max-height: 560px;
+    overflow-y: auto;
     box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
 }
 
-.fcj-chat-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-dark);
+.fcj-chat-empty {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 40px;
 }
 
-.fcj-chat-sub {
-    font-size: 0.83rem;
-    color: var(--text-gray);
-    margin-bottom: 12px;
-}
-
-/* Bolhas do chat */
 .msg-user {
     background: var(--fcj-primary);
     padding: 12px 15px;
@@ -162,9 +160,10 @@ html, body, [class*="css"]  {
     font-size: 0.94rem;
 }
 
-/* ===============================
-   INPUTS & BOTÕES
-   =============================== */
+/* ====================================
+   INPUTS E BOTÕES
+   ==================================== */
+
 textarea, input {
     background: white !important;
     color: var(--text-dark) !important;
@@ -180,11 +179,10 @@ textarea, input {
     background: var(--fcj-primary) !important;
     color: white !important;
     border-radius: 999px !important;
-    padding: 8px 28px !important;
+    padding: 8px 24px !important;
     border: none;
     box-shadow: 0 6px 14px rgba(27,166,178,0.25);
     font-weight: 600;
-    font-size: 0.95rem;
 }
 
 .stButton > button:hover {
@@ -205,21 +203,31 @@ textarea, input {
 )
 
 # =============================================
+# ENTER PARA ENVIAR (JavaScript)
+# =============================================
+st.markdown("""
+<script>
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+        const sendButton = window.parent.document.querySelector('button[kind="primary"]');
+        if (sendButton) { sendButton.click(); }
+        e.preventDefault();
+    }
+});
+</script>
+""", unsafe_allow_html=True)
+
+# =============================================
 # SIDEBAR – IDENTIFICAÇÃO
 # =============================================
 with st.sidebar:
     st.markdown(
         """
         <div style="margin-bottom:16px;">
-          <div style="
-            font-size:0.85rem;
-            text-transform:uppercase;
-            letter-spacing:0.08em;
-            color:#6b7280;">
+          <div style="font-size:0.85rem;text-transform:uppercase;color:#6b7280;">
             FCJ Venture Builder
           </div>
-
-          <div style="font-size:1.15rem;font-weight:700;color:#111827;">
+          <div style="font-size:1.18rem;font-weight:700;color:#111827;">
             TR4CTION Agent
           </div>
         </div>
@@ -230,7 +238,7 @@ with st.sidebar:
     startup_name = st.text_input("Startup")
     founder_name = st.text_input("Founder")
 
-    def generate_id(s: str, f: str):
+    def generate_id(s, f):
         return (s + "_" + f).lower().replace(" ", "_")[:60]
 
     founder_id = None
@@ -241,6 +249,7 @@ with st.sidebar:
 
         if st.button("🧹 Limpar conversa"):
             st.session_state.history = []
+            st.session_state.user_input = ""
             st.rerun()
 
     st.markdown("---")
@@ -249,20 +258,18 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
-# Se não estiver identificado → mostra aviso
+# Se não identificado
 if not (startup_name and founder_name and founder_id):
     st.markdown(
         """
         <div class="fcj-page">
-          <div class="fcj-header-bar">
-            <div>
-              <div class="fcj-header-badge">Agente de IA • TR4CTION</div>
-              <div class="fcj-header-title">TR4CTION Agent – FCJ Venture Builder</div>
-              <div class="fcj-header-sub">
-                Preencha Startup e Founder na barra lateral para iniciar.
-              </div>
+            <div class="fcj-header-bar">
+                <div>
+                    <div class="fcj-header-badge">Agente de IA • TR4CTION</div>
+                    <div class="fcj-header-title">TR4CTION Agent – FCJ Venture Builder</div>
+                    <div class="fcj-header-sub">Preencha Startup e Founder na lateral para iniciar.</div>
+                </div>
             </div>
-          </div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -270,7 +277,7 @@ if not (startup_name and founder_name and founder_id):
     st.stop()
 
 # =============================================
-# INÍCIO DA PÁGINA – HEADER COMPLETO
+# HEADER PRINCIPAL
 # =============================================
 st.markdown(
     """
@@ -287,12 +294,12 @@ st.markdown(
   </div>
 
   <div class="fcj-main-grid">
-    """,
+""",
     unsafe_allow_html=True,
 )
 
 # =============================================
-# PAINEL ESQUERDO (ETAPA)
+# COLUNA ESQUERDA – ETAPA
 # =============================================
 col_left, col_right = st.columns([0.95, 2.05])
 
@@ -300,10 +307,7 @@ with col_left:
     st.markdown('<div class="fcj-panel">', unsafe_allow_html=True)
 
     st.markdown('<div class="fcj-panel-title">Etapa do Q1</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="fcj-panel-sub">Selecione qual bloco você está trabalhando.</div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="fcj-panel-sub">Selecione qual bloco você está trabalhando.</div>', unsafe_allow_html=True)
 
     step_labels = [STEP_CONFIG[k]["label"] for k in STEP_ORDER]
     stage_label = st.selectbox("", step_labels, label_visibility="collapsed")
@@ -311,15 +315,14 @@ with col_left:
 
     st.markdown(
         f"""
-        <div style="margin-top:16px;font-size:0.86rem;color:#6b7280;">
+        <div style="margin-top:14px;font-size:0.86rem;color:#6b7280;">
             <strong>Startup:</strong> {startup_name}<br>
             <strong>Founder:</strong> {founder_name}<br>
-            <strong>Etapa:</strong> {stage_label}
+            <strong>Etapa atual:</strong> {stage_label}
         </div>
         """,
         unsafe_allow_html=True,
     )
-
     st.markdown("</div>", unsafe_allow_html=True)
 
 # =============================================
@@ -328,32 +331,43 @@ with col_left:
 if "history" not in st.session_state:
     st.session_state.history = []
 
+if "user_input" not in st.session_state:
+    st.session_state.user_input = ""
+
 agent = Tr4ctionAgent(startup_name)
 
 with col_right:
     st.markdown('<div class="fcj-chat-card">', unsafe_allow_html=True)
 
     st.markdown('<div class="fcj-chat-title">Conversa com o TR4CTION Agent</div>', unsafe_allow_html=True)
-    st.markdown('<div class="fcj-chat-sub">Aprofunde a etapa atual conversando com o agente.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="fcj-chat-sub">Aprofunde a etapa conversando com o agente.</div>', unsafe_allow_html=True)
 
-    # Histórico
+    # placeholder se vazio
+    if len(st.session_state.history) == 0:
+        st.markdown("<div class='fcj-chat-empty'>Nenhuma mensagem ainda. Inicie a conversa! 💬</div>", unsafe_allow_html=True)
+
+    # histórico
     for msg in st.session_state.history:
         if msg["role"] == "user":
             st.markdown(f"<div class='msg-user'>{msg['content']}</div>", unsafe_allow_html=True)
         else:
             st.markdown(f"<div class='msg-agent'>{msg['content']}</div>", unsafe_allow_html=True)
 
-    # Input
-    user_input = st.text_area("", placeholder="Descreva sua dúvida ou etapa atual...")
+    # caixa de texto
+    user_input = st.text_area(
+        "",
+        placeholder="Digite sua pergunta, contexto ou resposta aqui...",
+        key="user_input"
+    )
 
     if st.button("Enviar mensagem"):
-        if user_input.strip():
-            st.session_state.history.append({"role": "user", "content": user_input})
+        if st.session_state.user_input.strip():
+            st.session_state.history.append({"role": "user", "content": st.session_state.user_input})
 
             response = agent.ask(
                 step_key=step_key,
                 history=st.session_state.history,
-                user_input=user_input
+                user_input=st.session_state.user_input
             )
 
             st.session_state.history.append({"role": "assistant", "content": response})
@@ -366,12 +380,13 @@ with col_right:
                 answer_text=response
             )
 
+            st.session_state.user_input = ""  # limpa o campo
             st.rerun()
 
     st.markdown("</div>", unsafe_allow_html=True)
 
 # =============================================
-# RODAPÉ
+# FOOTER
 # =============================================
 st.markdown(
     """
